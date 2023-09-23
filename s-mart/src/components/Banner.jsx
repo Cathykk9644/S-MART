@@ -23,7 +23,7 @@ const Banner = () => {
   ];
 
   return (
-    <div className="w-full h-auto overflow-hidden pt-28 relative">
+    <div className="w-full h-auto overflow-hidden relative">
       {data.map((img, idx) => (
         <img
           key={idx}
