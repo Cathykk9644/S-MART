@@ -1,10 +1,17 @@
 import React from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { cart, logo } from "../assets/index";
+import { useUser } from "../contexts/userContext";
+import { logOut } from "../api/firebase-authentication";
+import { useNavigate, useLocation } from "react-router-dom";
+import HeaderUserDropdown from "./HeaderUserDropdown";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const Header = () => {
+  const { user } = useUser();
+  const navigate = useNavigate();
+  const location = useLocation();
   // selector function is (state) => state.smart.productData, which means that productData will be an array that comes from state.smart.productData in your Redux store.
   const productData = useSelector((state) => state.smart.productData);
   return (
@@ -28,30 +35,64 @@ const Header = () => {
             </div>
           </Link>
 
-          <div className="flex items-center gap-6">
-            <ul className="flex items-center gap-6">
-              <li className="text-teal-500 hover:text-teal-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-200 hover:font-bold">
-                Home
-              </li>
-              <li className="text-teal-500 font-bold hover:text-teal-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-200 ">
-                Pages
-              </li>
-              <li className="text-teal-500 font-bold hover:text-teal-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-200">
-                Shop
-              </li>
-              <li className="text-teal-500 font-bold hover:text-teal-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-200">
-                Blog
-              </li>
-            </ul>
-            <div className="relative">
-              <img className="w-6" src={cart} alt="cart-image" />
-              <span
-                className={`absolute w-6 top-2 left-0 text-sm flex items-center justify-center font-bold ${
-                  productData.length > 0 ? "text-teal-600" : ""
-                }`}
-              >
-                {productData.length}
-              </span>
+          <div className="flex flex-col ">
+            <div className="flex justify-end mb-3">
+              {user ? (
+                <HeaderUserDropdown />
+              ) : (
+                <div className="text-teal-500">
+                  <button
+                    onClick={() =>
+                      navigate("/signin", {
+                        state: { from: location.pathname },
+                      })
+                    }
+                    className="text-teal-500 font-bold hover:text-teal-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-200"
+                  >
+                    Sign In
+                  </button>
+                  {" | "}
+                  <button
+                    onClick={() =>
+                      navigate("/register", {
+                        state: { from: location.pathname },
+                      })
+                    }
+                    className="text-teal-500 font-bold hover:text-teal-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-200"
+                  >
+                    Register
+                  </button>
+                </div>
+              )}
+            </div>
+            <div className="flex items-center gap-6">
+              <ul className="flex items-center gap-6">
+                <li
+                  onClick={() => navigate("/")}
+                  className="text-teal-500 hover:text-teal-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-200 hover:font-bold"
+                >
+                  Home
+                </li>
+                <li className="text-teal-500 font-bold hover:text-teal-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-200 ">
+                  Pages
+                </li>
+                <li className="text-teal-500 font-bold hover:text-teal-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-200">
+                  Shop
+                </li>
+                <li className="text-teal-500 font-bold hover:text-teal-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-200">
+                  Blog
+                </li>
+              </ul>
+              <div className="relative">
+                <img className="w-6" src={cart} alt="cart-image" />
+                <span
+                  className={`absolute w-6 top-2 left-0 text-sm flex items-center justify-center font-bold ${
+                    productData.length > 0 ? "text-teal-600" : ""
+                  }`}
+                >
+                  {productData.length}
+                </span>
+              </div>
             </div>
           </div>
         </div>
