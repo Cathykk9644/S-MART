@@ -3,18 +3,20 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { cart, logo } from "../assets/index";
 import { useUser } from "../contexts/userContext";
 import { logOut } from "../api/firebase-authentication";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import HeaderUserDropdown from "./HeaderUserDropdown";
 
 const Header = () => {
   const { user } = useUser();
   const navigate = useNavigate();
+  const location = useLocation();
 
   return (
     <>
-      <div className="fixed z-50 w-full h-28 bg-white border-b-gray-200 border-b-[1px]">
+      <div className="fixed z-40 w-full h-28 bg-white border-b-gray-200 border-b-[1px]">
         <div>
-          <div className="max-w-screen-xl h-full mx-auto mt-8 mb-4 flex items-center justify-between">
-            <div className="flex items-center gap-6">
+          <div className="max-w-screen-xl h-full mx-auto mt-4 mb-4 flex items-center justify-between">
+            <div className="flex items-center gap-6 mt-4 ">
               <img
                 onClick={() => navigate("/")}
                 className="w-28.5 h-12 cursor-pointer"
@@ -34,27 +36,37 @@ const Header = () => {
               </div>
             </div>
 
-            <div className="flex flex-col">
-              <div className="flex justify-end gap-6">
+            <div className="flex flex-col ">
+              <div className="flex justify-end mb-3">
                 {user ? (
-                  <div>
-                    {user.displayName ? user.displayName : user.email}{" "}
-                    <button onClick={async () => await logOut()}>
-                      Sign Out
-                    </button>
-                    <button onClick={console.log(user)}>Console</button>
-                  </div>
+                  <HeaderUserDropdown />
                 ) : (
-                  <div>
-                    <button onClick={() => navigate("/signin")}>Sign In</button>
-                    /
-                    <button onClick={() => navigate("/register")}>
+                  <div className="text-teal-500">
+                    <button
+                      onClick={() =>
+                        navigate("/signin", {
+                          state: { from: location.pathname },
+                        })
+                      }
+                      className="text-teal-500 font-bold hover:text-teal-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-200"
+                    >
+                      Sign In
+                    </button>
+                    {" | "}
+                    <button
+                      onClick={() =>
+                        navigate("/register", {
+                          state: { from: location.pathname },
+                        })
+                      }
+                      className="text-teal-500 font-bold hover:text-teal-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-200"
+                    >
                       Register
                     </button>
                   </div>
                 )}
               </div>
-              <div className="flex items-center gap-6">
+              <div className="flex items-center gap-6 mb-2">
                 <ul className="flex items-center gap-6">
                   <li
                     onClick={() => navigate("/")}
@@ -62,7 +74,7 @@ const Header = () => {
                   >
                     Home
                   </li>
-                  <li className="text-teal-500 font-bold hover:text-teal-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-200 ">
+                  <li className="text-teal-500 font-bold hover:text-teal-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-200">
                     Pages
                   </li>
                   <li className="text-teal-500 font-bold hover:text-teal-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-200">

@@ -1,25 +1,26 @@
 import React, { useState } from "react";
 import { signIn } from "../api/firebase-authentication";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const SignIn = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { from } = location.state || { from: { pathname: "/" } };
+
   const [state, setState] = useState({
     email: "",
     password: "",
   });
 
-  const navigate = useNavigate();
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const user = await signIn(state.email, state.password);
     if (user) {
-      // setIsLoggedIn(true);
       setState({
         email: "",
         password: "",
       });
-      navigate("/");
+      navigate(from === "/register" || from === "/signin" ? "/" : from);
     }
   };
 
@@ -33,6 +34,7 @@ const SignIn = () => {
   return (
     <div className="flex h-[70vh] justify-center items-center">
       <div className="flex flex-col items-center justify-start h-full sm:max-w-sm sm:w-full">
+        <button onClick={() => console.log(location)}>Location</button>
         <h2 className="mt-24 text-2xl font-bold text-gray-900">
           Sign in to your account
         </h2>
@@ -57,7 +59,7 @@ const SignIn = () => {
             <label>Password</label>
             <input
               className="block w-full mt-2 rounded-md border-0 p-1.5 text-gray-900 text-sm shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-0 focus:ring-2 focus:ring-inset focus:ring-teal-500"
-              type="text"
+              type="password"
               name="password"
               placeholder="Your Password"
               value={state.password}
@@ -73,6 +75,16 @@ const SignIn = () => {
             value="Sign In"
           />
         </form>
+        <button
+          onClick={() =>
+            navigate("/register", {
+              state: { from: from },
+            })
+          }
+          className="w-full mt-2 text-end text-sm text-teal-500 hover:text-teal-700 hover:font-semibold hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-200"
+        >
+          No account? Register here
+        </button>
       </div>
     </div>
   );
