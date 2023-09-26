@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useUser } from "../contexts/userContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { EmailAuthProvider, reauthenticateWithCredential } from "firebase/auth";
 import EditProfileForm from "../components/EditProfileForm";
 
@@ -12,6 +12,8 @@ const Profile = () => {
   // });
   const [userEnteredPassword, setUserEnteredPassword] = useState("");
   const [allowEditProfile, setAllowEditProfile] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const submitReauth = async (e) => {
     e.preventDefault();
@@ -27,6 +29,13 @@ const Profile = () => {
         console.log(error);
       });
   };
+
+  if (!user) {
+    return navigate("/signin");
+    // return navigate("/signin", {
+    //   state: { from: "/profile" },
+    // });
+  }
 
   return (
     <div>
@@ -48,8 +57,8 @@ const Profile = () => {
             >
               <input
                 className="block w-full mt-2 rounded-md border-0 p-1.5 text-gray-900 text-sm shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-0 focus:ring-2 focus:ring-inset focus:ring-teal-500"
-                type="text"
-                name="email"
+                type="password"
+                name="password"
                 placeholder="Your Password"
                 value={userEnteredPassword}
                 required

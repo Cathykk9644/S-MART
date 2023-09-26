@@ -1,25 +1,33 @@
 import React, { useState } from "react";
 import { register } from "../api/firebase-authentication";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Register = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { from } = location.state || { from: { pathname: "/" } };
+
   const [state, setState] = useState({
     email: "",
     password: "",
+    confirmPassword: "",
   });
-
-  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (state.email && state.password) {
+    if (
+      state.email &&
+      state.password &&
+      state.password === state.confirmPassword
+    ) {
       const user = await register(state.email, state.password);
       if (user) {
         setState({
           email: "",
           password: "",
+          confirmPassword: "",
         });
-        navigate("/");
+        navigate(from === "/register" || from === "/signin" ? "/" : from);
       }
     }
   };
@@ -34,7 +42,8 @@ const Register = () => {
   return (
     <div className="flex h-[70vh] justify-center items-center">
       <div className="flex flex-col items-center justify-start h-full sm:max-w-sm sm:w-full">
-        <h2 className="mt-24 text-2xl font-bold text-gray-900">
+        <button onClick={() => console.log(location)}>Location</button>
+        <h2 className="mt-16 text-2xl font-bold text-gray-900">
           Register a new account
         </h2>
         <form
@@ -58,10 +67,33 @@ const Register = () => {
             <label>Password</label>
             <input
               className="block w-full mt-2 rounded-md border-0 p-1.5 text-gray-900 text-sm shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-0 focus:ring-2 focus:ring-inset focus:ring-teal-500"
-              type="text"
+              type="password"
               name="password"
               placeholder="Your Password"
               value={state.password}
+              required
+              onChange={(e) => handleChange(e)}
+            />
+          </div>
+
+          <div className="w-full">
+            <div className="flex items-center justify-between">
+              <label>Retype Password</label>
+              {state.password === state.confirmPassword ? (
+                <br />
+              ) : (
+                <div className="text-sm text-red-700 leading-6">
+                  Passwords must match
+                </div>
+              )}
+            </div>
+
+            <input
+              className="block w-full mt-2 rounded-md border-0 p-1.5 text-gray-900 text-sm shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-0 focus:ring-2 focus:ring-inset focus:ring-teal-500"
+              type="password"
+              name="confirmPassword"
+              placeholder="Your Password"
+              value={state.confirmPassword}
               required
               onChange={(e) => handleChange(e)}
             />
