@@ -1,41 +1,78 @@
+// import React from "react";
+// import Home from "./pages/Home";
+// import Cart from "./pages/Cart";
+// import Header from "./components/Header";
+// import Footer from "./components/Footer";
+// import {
+//   createBrowserRouter,
+//   Outlet,
+//   RouterProvider,
+//   ScrollRestoration,
+// } from "react-router-dom";
+// import { productsData } from "./api/api";
+
+// const Layout = () => {
+//   return (
+//     <div>
+//       <Header />
+//       <Outlet />
+//       <Footer />
+//     </div>
+//   );
+// };
+
+// const router = createBrowserRouter([
+//   {
+//     path: "/",
+//     element: <Layout />,
+//     children: [
+//       { path: "/", element: <Home />, loader: productsData },
+//       { path: "/cart", element: <Cart /> },
+//     ],
+//   },
+// ]);
+
+// function App() {
+//   return (
+//     <div className="font-titleFont">
+//       <RouterProvider router={router} />
+//     </div>
+//   );
+// }
+
+// export default App;
+
 import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import {
-  createBrowserRouter,
-  Outlet,
-  RouterProvider,
-  ScrollRestoration,
-} from "react-router-dom";
-import { productsData } from "./api/api";
+import ProductInfo from "./components/ProductInfo";
 
-const Layout = () => {
+const Layout = ({ children }) => {
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
       <Header />
-      <Outlet />
+      <main className="flex-grow">{children}</main>
+
       <Footer />
     </div>
   );
 };
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Layout />,
-    children: [
-      { path: "/", element: <Home />, loader: productsData },
-      { path: "/cart", element: <Cart /> },
-    ],
-  },
-]);
-
 function App() {
   return (
     <div className="font-titleFont">
-      <RouterProvider router={router} />
+      <Router>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/product/:id" element={<ProductInfo />} />
+            <Route path="/cart" element={<Cart />} />
+          </Routes>
+        </Layout>
+      </Router>
     </div>
   );
 }

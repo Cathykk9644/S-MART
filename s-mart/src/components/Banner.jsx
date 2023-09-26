@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaArrowCircleRight, FaArrowCircleLeft } from "react-icons/fa";
+import TypingEffect from "./TypingEffect";
 
 const Banner = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -24,6 +25,7 @@ const Banner = () => {
 
   return (
     <div className="w-full h-auto overflow-hidden pt-28 relative">
+      {currentSlide === 0 && <TypingEffect />}
       {data.map((img, idx) => (
         <img
           key={idx}
