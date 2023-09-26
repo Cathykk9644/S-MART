@@ -15,7 +15,7 @@ const ProductInfo = () => {
   }, []);
 
   return (
-    <div className="pt-28 ">
+    <div>
       <div className="max-w-screen-xl mx-auto my-10 flex gap-10">
         <div className="w-2/5 relative">
           <img
