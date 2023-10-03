@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { signIn } from "../api/firebase-authentication";
 import { useNavigate, useLocation } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -21,6 +22,8 @@ const SignIn = () => {
         password: "",
       });
       navigate(from === "/register" || from === "/signin" ? "/" : from);
+    } else {
+      toast.error("Incorrect email or password");
     }
   };
 
@@ -86,6 +89,18 @@ const SignIn = () => {
           No account? Register here
         </button>
       </div>
+      <ToastContainer
+        position="top-left"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 };
