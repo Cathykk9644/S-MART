@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useUser } from "../contexts/userContext";
 import { updateProfile, updateEmail, updatePassword } from "firebase/auth";
+import { uploadImage } from "../api/firebase-storage";
+import { ToastContainer, toast } from "react-toastify";
+import { BiSolidUser } from "react-icons/bi";
 
 const EditProfileForm = () => {
   const { user } = useUser();
@@ -10,11 +13,12 @@ const EditProfileForm = () => {
     password: "",
     retypePassword: "",
   });
+  const [fileInput, setFileInput] = useState(null);
 
   const updateDisplayName = () => {
     updateProfile(user, { displayName: newDisplayName })
       .then(() => {
-        console.log("display name updated, user:", user);
+        toast.success("Display name updated!");
         setNewDisplayName("");
       })
       .catch((error) => console.log(error));
@@ -23,7 +27,7 @@ const EditProfileForm = () => {
   const updateUserEmail = () => {
     updateEmail(user, newEmail)
       .then(() => {
-        console.log("email updated, user:", user);
+        toast.success("Email updated!");
         setNewEmail("");
       })
       .catch((error) => console.log(error));
@@ -36,11 +40,30 @@ const EditProfileForm = () => {
     ) {
       updatePassword(user, newPassword.password)
         .then(() => {
-          console.log("password updated");
+          toast.success("Password updated!");
           setNewPassword({
             password: "",
             retypePassword: "",
           });
+        })
+        .catch((error) => console.log(error));
+    }
+  };
+
+  const updateDisplayPicture = async () => {
+    if (fileInput) {
+      const url = await uploadImage(fileInput);
+      updateProfile(user, { photoURL: url })
+        .then(() => {
+          toast.success("Display picture updated!");
+          setFileInput(null);
+        })
+        .catch((error) => console.log(error));
+    } else {
+      updateProfile(user, { photoURL: "" })
+        .then(() => {
+          toast.success("Display picture removed!");
+          setFileInput(null);
         })
         .catch((error) => console.log(error));
     }
@@ -151,10 +174,43 @@ const EditProfileForm = () => {
           </div>
         </div>
         {/* Update display picture */}
-        <div className="flex flex-col items-center justify-start w-2/5 h-5/6 border-l-2">
-          Add function to upload display picture
+        <div className="flex flex-col items-center justify-start w-2/5 h-5/6 border-l-2 space-y-4">
+          {user.photoURL ? (
+            <img
+              src={user.photoURL}
+              alt="File not found"
+              className="block w-1/3 h-auto rounded-full border border-gray-300"
+            />
+          ) : (
+            <BiSolidUser className="block w-1/3 h-auto rounded-full text-gray-300 border border-gray-300" />
+          )}
+
+          <input
+            className="block w-4/5 cursor-pointer rounded-lg border shadow-sm file:cursor-pointer file:bg-white file:border-0 file:text-teal-700 file:hover:text-white file:hover:bg-teal-500 text-sm file:leading-7 file:px-2 text-gray-700 border-gray-300 bg-gray-200 overflow-hidden"
+            type="file"
+            name="file"
+            onChange={(e) => setFileInput(e.target.files[0])}
+          />
+          <button
+            onClick={updateDisplayPicture}
+            className="flex w-1/2 justify-center items-center rounded-md py-1 bg-teal-600 text-sm leading-6 text-white shadow-sm hover:bg-teal-500"
+          >
+            Update Picture
+          </button>
         </div>
       </div>
+      <ToastContainer
+        position="top-left"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 };

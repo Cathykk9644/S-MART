@@ -3,6 +3,7 @@ import { signIn } from "../api/firebase-authentication";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../redux/smartSlice";
+import { ToastContainer, toast } from "react-toastify";
 
 const SignIn = () => {
   // Add user from redux store
@@ -38,6 +39,8 @@ const SignIn = () => {
         password: "",
       });
       navigate(from === "/register" || from === "/signin" ? "/" : from);
+    } else {
+      toast.error("Incorrect email or password");
     }
   };
 
@@ -103,6 +106,18 @@ const SignIn = () => {
           No account? Register here
         </button>
       </div>
+      <ToastContainer
+        position="top-left"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 };
