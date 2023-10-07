@@ -5,17 +5,14 @@ export const UserContext = createContext();
 
 export const UserProvider = (props) => {
   const [user, setUser] = useState(null);
-  const [isAuth, setIsAuth] = useState(false);
 
   const state = {
     user,
-    // isAuth,
   };
 
   const reAuth = () => {
     const checkIfLoggedIn = (authedUser) => {
       setUser(authedUser);
-      // authedUser ? setIsAuth(true) : setIsAuth(false);
       console.log(authedUser);
     };
     try {

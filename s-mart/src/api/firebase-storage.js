@@ -5,12 +5,23 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 
-const PRODUCT_STORAGE_KEY = "images/products/";
+const PROFILE_STORAGE_KEY = "images/profile/";
+const REVIEW_STORAGE_KEY = "images/review/";
 
-export const uploadImage = async (fileInputFile) => {
+export const uploadProfileImage = async (fileInputFile) => {
   const fullStorageRef = storageRef(
     storage,
-    PRODUCT_STORAGE_KEY + fileInputFile.name
+    PROFILE_STORAGE_KEY + fileInputFile.name
+  );
+  await uploadBytes(fullStorageRef, fileInputFile);
+  const url = await getDownloadURL(fullStorageRef, fileInputFile.name);
+  return url;
+};
+
+export const uploadReviewImage = async (fileInputFile) => {
+  const fullStorageRef = storageRef(
+    storage,
+    REVIEW_STORAGE_KEY + fileInputFile.name
   );
   await uploadBytes(fullStorageRef, fileInputFile);
   const url = await getDownloadURL(fullStorageRef, fileInputFile.name);
