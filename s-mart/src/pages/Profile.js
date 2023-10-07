@@ -1,19 +1,13 @@
 import React, { useState } from "react";
 import { useUser } from "../contexts/userContext";
-import { useNavigate, useLocation } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { EmailAuthProvider, reauthenticateWithCredential } from "firebase/auth";
 import EditProfileForm from "../components/EditProfileForm";
 
 const Profile = () => {
   const { user } = useUser();
-  // const [state, setState] = useState({
-  //   email: user.email,
-  //   displayName: user.displayName,
-  // });
   const [userEnteredPassword, setUserEnteredPassword] = useState("");
   const [allowEditProfile, setAllowEditProfile] = useState(false);
-  const navigate = useNavigate();
-  const location = useLocation();
 
   const submitReauth = async (e) => {
     e.preventDefault();
@@ -31,10 +25,9 @@ const Profile = () => {
   };
 
   if (!user) {
-    return navigate("/signin");
-    // return navigate("/signin", {
-    //   state: { from: "/profile" },
-    // });
+    return (
+      <Navigate to="/signin" replace={true} state={{ from: "/profile" }} />
+    );
   }
 
   return (

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useUser } from "../contexts/userContext";
 import { updateProfile, updateEmail, updatePassword } from "firebase/auth";
-import { uploadImage } from "../api/firebase-storage";
+import { uploadProfileImage } from "../api/firebase-storage";
 import { ToastContainer, toast } from "react-toastify";
 import { BiSolidUser } from "react-icons/bi";
 
@@ -52,7 +52,7 @@ const EditProfileForm = () => {
 
   const updateDisplayPicture = async () => {
     if (fileInput) {
-      const url = await uploadImage(fileInput);
+      const url = await uploadProfileImage(fileInput);
       updateProfile(user, { photoURL: url })
         .then(() => {
           toast.success("Display picture updated!");

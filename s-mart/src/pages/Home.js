@@ -1,23 +1,26 @@
 import React, { useState, useEffect } from "react";
 import Banner from "../components/Banner";
 import Products from "../components/Products";
-import { productsData } from "../api/api";
+// import { productsData } from "../api/api";
+import { useProducts } from "../contexts/productContext";
 
 const Home = () => {
-  const [products, setProducts] = useState([]);
+  const { products } = useProducts();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const result = await productsData();
-        setProducts(result.data);
-      } catch (error) {
-        console.error("Failed to fetch products:", error);
-      }
-    };
+  // const [products, setProducts] = useState([]);
 
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const result = await productsData();
+  //       setProducts(result.data);
+  //     } catch (error) {
+  //       console.error("Failed to fetch products:", error);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);
 
   return (
     <div>

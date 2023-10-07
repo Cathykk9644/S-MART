@@ -42,7 +42,7 @@ const Register = () => {
   return (
     <div className="flex h-[70vh] justify-center items-center">
       <div className="flex flex-col items-center justify-start h-full sm:max-w-sm sm:w-full">
-        <button onClick={() => console.log(location)}>Location</button>
+        {/* <button onClick={() => console.log(location)}>Location</button> */}
         <h2 className="mt-16 text-2xl font-bold text-gray-900">
           Register a new account
         </h2>

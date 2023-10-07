@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { cart, logo } from "../assets/index";
 import { useUser } from "../contexts/userContext";
-import { logOut } from "../api/firebase-authentication";
 import { useNavigate, useLocation } from "react-router-dom";
 import HeaderUserDropdown from "./HeaderUserDropdown";
 import { Link } from "react-router-dom";
@@ -14,27 +13,37 @@ const Header = () => {
   const location = useLocation();
   // selector function is (state) => state.smart.productData, which means that productData will be an array that comes from state.smart.productData in your Redux store.
   const productData = useSelector((state) => state.smart.productData);
+
+  const [searchTerms, setSearchTerms] = useState("");
+  const handleSearch = (e) => {
+    e.preventDefault();
+    navigate("/search", { state: { searchTerms: searchTerms } });
+    setSearchTerms("");
+  };
+
   return (
     <>
       <div className="fixed z-50 w-full h-28 bg-white border-b-gray-200 border-b-[1px]">
         <div>
           <div className="max-w-screen-xl h-full mx-auto mt-8 mb-4 flex items-center justify-between">
-            <Link to="/">
-              <div className="flex items-center gap-6">
+            <div className="flex items-center gap-6">
+              <Link to="/">
                 <img className="w-28.5 h-12" src={logo} alt="store-logo" />
-
-                {/* Search Bar */}
-                <div className="relative">
-                  <AiOutlineSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                  <input
-                    className="border-2 border-gray-300 bg-white w-80 h-10 px-5 pl-10 pr-10 rounded-full text-sm focus:outline-none hover:border-gray-500"
-                    type="search"
-                    name="search"
-                    placeholder="Search"
-                  />
-                </div>
-              </div>
-            </Link>
+              </Link>
+              {/* Search Bar */}
+              <form onSubmit={handleSearch} className="relative">
+                <AiOutlineSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                <input
+                  className="border-2 border-gray-300 bg-white w-80 h-10 px-5 pl-10 pr-10 rounded-full text-sm focus:outline-none hover:border-gray-500"
+                  type="search"
+                  name="search"
+                  placeholder="Search"
+                  value={searchTerms}
+                  required
+                  onChange={(e) => setSearchTerms(e.target.value)}
+                />
+              </form>
+            </div>
 
             <div className="flex flex-col ">
               <div className="flex justify-end mb-3">
