@@ -69,7 +69,7 @@ const ProductCard = ({ product }) => {
         }
         className="w-full p-2 bg-teal-500 text-white rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"
       >
-        Add to Cart
+        Add to cart
       </button>
       <ToastContainer
         position="top-left"
@@ -81,7 +81,7 @@ const ProductCard = ({ product }) => {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="dark"
+        theme="light"
       />
     </div>
   );

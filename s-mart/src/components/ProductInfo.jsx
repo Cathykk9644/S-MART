@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { HiStar } from "react-icons/hi";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/smartSlice";
@@ -91,10 +91,16 @@ const ProductInfo = () => {
               </button>
             </div>
           </div>
+
           <p className="text-gray-500">
             Category:{" "}
             <span className="font-medium capitalize">{details.category}</span>
           </p>
+          <Link to="/">
+            <button className="text-gray-500 hover:text-gray-700 duration-300 cursor-pointer  border-[1px] p-3 rounded-lg hover:scale-95 text-sm">
+              Go shopping
+            </button>
+          </Link>
         </div>
       </div>
       <ToastContainer
@@ -107,7 +113,7 @@ const ProductInfo = () => {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="dark"
+        theme="light"
       />
     </div>
   );

@@ -12,8 +12,12 @@ const Header = () => {
   const { user } = useUser();
   const navigate = useNavigate();
   const location = useLocation();
+  const userContext = useUser();
+  console.log(userContext);
   // selector function is (state) => state.smart.productData, which means that productData will be an array that comes from state.smart.productData in your Redux store.
   const productData = useSelector((state) => state.smart.productData);
+  const userInfo = useSelector((state) => state.smart.userInfo);
+  console.log(userInfo);
   return (
     <>
       <div className="fixed z-50 w-full h-28 bg-white border-b-gray-200 border-b-[1px]">
@@ -84,16 +88,18 @@ const Header = () => {
                     Blog
                   </li>
                 </ul>
-                <div className="relative">
-                  <img className="w-6" src={cart} alt="cart-image" />
-                  <span
-                    className={`absolute w-6 top-2 left-0 text-sm flex items-center justify-center font-bold ${
-                      productData.length > 0 ? "text-teal-600" : ""
-                    }`}
-                  >
-                    {productData.length}
-                  </span>
-                </div>
+                <Link to="/cart">
+                  <div className="relative">
+                    <img className="w-6" src={cart} alt="cart-image" />
+                    <span
+                      className={`absolute w-6 top-2 left-0 text-sm flex items-center justify-center font-bold ${
+                        productData.length > 0 ? "text-teal-600" : ""
+                      }`}
+                    >
+                      {productData.length}
+                    </span>
+                  </div>
+                </Link>
               </div>
             </div>
           </div>

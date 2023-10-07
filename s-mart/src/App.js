@@ -20,20 +20,6 @@ const Layout = ({ children }) => {
   );
 };
 
-// const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <Layout />,
-//     children: [
-//       { path: "/", element: <Home />, loader: productsData },
-//       { path: "/cart", element: <Cart /> },
-//       { path: "/signin", element: <SignIn /> },
-//       { path: "/register", element: <Register /> },
-//       { path: "/profile", element: <Profile /> },
-//     ],
-//   },
-// ]);
-
 function App() {
   return (
     <div className="font-titleFont">
