@@ -4,10 +4,12 @@ import { useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
+import { useUser } from "../contexts/userContext";
 
 const Cart = () => {
   const productData = useSelector((state) => state.smart.productData);
-  const userInfo = useSelector((state) => state.smart.userInfo);
+  // const userInfo = useSelector((state) => state.smart.userInfo);
+  const { user } = useUser();
   const [totalAmt, setTotalAmt] = useState("");
   const [payNow, setPayNow] = useState(false);
 
@@ -23,7 +25,8 @@ const Cart = () => {
   }, [productData]);
 
   const handleCheckout = () => {
-    if (userInfo) {
+    console.log(user);
+    if (user) {
       setPayNow(true);
     } else {
       toast.error("Please sign in to Checkout");
@@ -86,7 +89,7 @@ const Cart = () => {
                   label="Pay to S-MART"
                   description={`Your payment is $${totalAmt} in total`}
                   token={payment}
-                  email={userInfo.email}
+                  email={user && user.email}
                 />
               </div>
             )}
