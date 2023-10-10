@@ -12,11 +12,8 @@ const ProductInfo = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const details = location.state.item;
-  // const [details, setDetails] = useState({});
+
   const [baseQty, setBaseQty] = useState(1);
-  // useEffect(() => {
-  //   setDetails(location.state.item);
-  // }, []);
 
   const [reviews, setReviews] = useState([]);
 
@@ -113,24 +110,23 @@ const ProductInfo = () => {
               <span className="font-medium capitalize">{details.category}</span>
             </p>
           </div>
-          <p className="text-gray-500">
-            Category:{" "}
-            <span className="font-medium capitalize">{details.category}</span>
-          </p>
-          <Link to="/">
-            <button className="text-gray-500 hover:text-gray-700 duration-300 cursor-pointer  border-[1px] p-3 rounded-lg hover:scale-95 text-sm">
-              Go shopping
-            </button>
-          </Link>
         </div>
         <div>
           <ReviewForm product={details} />
-          <div className="flex flex-col-reverse w-full">
+          <div className="flex flex-col-reverse w-full ">
             {reviews.map((review) => (
               <ReviewCard review={review} />
             ))}
           </div>
         </div>
+        <div className="flex justify-center items-center">
+          <Link to="/">
+            <button className="text-gray-500 hover:text-gray-700 duration-300 cursor-pointer  border-[1px] p-3 rounded-lg hover:scale-95 text-sm mt-2">
+              Back to Shopping
+            </button>
+          </Link>
+        </div>
+
         <ToastContainer
           position="top-left"
           autoClose={2000}

@@ -53,7 +53,7 @@ const Register = () => {
           <div className="w-full">
             <label className="block text-gray-500">Email</label>
             <input
-              className="block w-full mt-2 rounded-md border-0 p-1.5 text-gray-500 text-sm shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-0 focus:ring-2 focus:ring-inset focus:ring-teal-500"
+              className="block w-full mt-2 rounded-md border-0 p-2 text-gray-500 text-xs shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-0 focus:ring-1 focus:ring-inset focus:ring-teal-500"
               type="text"
               name="email"
               placeholder="Your Email"
@@ -71,7 +71,7 @@ const Register = () => {
               Password
             </label>
             <input
-              className="block w-full mt-2 rounded-md border-0 p-1.5 text-gray-500 text-sm shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-0 focus:ring-2 focus:ring-inset focus:ring-teal-500"
+              className="block w-full mt-2 rounded-md border-0 p-2 text-gray-500 text-xs shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-0 focus:ring-1 focus:ring-inset focus:ring-teal-500"
               type="password"
               name="password"
               placeholder="Your Password"
@@ -94,7 +94,7 @@ const Register = () => {
             </div>
 
             <input
-              className="block w-full mt-2 rounded-md border-0 p-1.5 text-gray-500 text-sm shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-0 focus:ring-2 focus:ring-inset focus:ring-teal-500"
+              className="block w-full mt-2 rounded-md border-0 p-2 text-gray-500 text-xs shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-0 focus:ring-1 focus:ring-inset focus:ring-teal-500"
               type="password"
               name="confirmPassword"
               placeholder="Your Password Again"

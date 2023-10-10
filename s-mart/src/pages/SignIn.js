@@ -65,7 +65,7 @@ const SignIn = () => {
           <div className="w-full">
             <label className="block text-gray-500">Email</label>
             <input
-              className="block w-full mt-2 rounded-md border-0 p-1.5 text-gray-900 text-sm shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-0 focus:ring-2 focus:ring-inset focus:ring-teal-500"
+              className="block w-full mt-2 rounded-md border-0 p-1.5 text-gray-900 text-xs shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-0 focus:ring-1 focus:ring-inset focus:ring-teal-500"
               type="text"
               name="email"
               placeholder="Your Email"
@@ -78,7 +78,7 @@ const SignIn = () => {
           <div className="w-full">
             <label className="text-gray-500">Password</label>
             <input
-              className="block w-full mt-2 rounded-md border-0 p-1.5 text-gray-500 text-sm shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-0 focus:ring-2 focus:ring-inset focus:ring-teal-500"
+              className="block w-full mt-2 rounded-md border-0 p-1.5 text-gray-500 text-xs shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-0 focus:ring-1 focus:ring-inset focus:ring-teal-500"
               type="password"
               name="password"
               placeholder="Your Password"
@@ -101,9 +101,9 @@ const SignIn = () => {
               state: { from: from },
             })
           }
-          className="w-full mt-2 text-end text-sm text-teal-500 hover:text-teal-700 hover:font-semibold hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-200"
+          className="w-full mt-4 text-center text-xs text-teal-500 hover:text-teal-700 hover:font-semibold hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-200"
         >
-          No account? Register here
+          No account yet? Register here.
         </button>
       </div>
       <ToastContainer

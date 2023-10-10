@@ -5,18 +5,18 @@ import { BiSolidUser } from "react-icons/bi";
 
 const ReviewCard = ({ review }) => {
   return (
-    <div className="flex space-x-3 py-4 border-t-[1px]">
+    <div className="flex space-x-4 py-4 border-b-[1px]">
       <BiSolidUser
         size={32}
         className="block rounded-full text-gray-300 border border-gray-300"
       />
       <div className="flex flex-col">
         <div className="flex space-x-2 items-center">
-          <div className="text-gray-700 font-semibold">Name</div>
+          <div className="text-gray-500 font-semibold">Name</div>
           <div className="text-gray-400 text-sm">Reviewed on {review.date}</div>
         </div>
 
-        <div className="flex mt-1 text-gray-700">
+        <div className="flex mt-1 text-gray-500">
           <AiFillStar className="text-yellow-500" />
           <AiFillStar
             className={review.reviewStars > 1 ? "text-yellow-500" : ""}
@@ -31,7 +31,7 @@ const ReviewCard = ({ review }) => {
             className={review.reviewStars > 4 ? "text-yellow-500" : ""}
           />
         </div>
-        <div className="text-gray-700 mt-4">{review.reviewText}</div>
+        <div className="text-gray-500 mt-4">{review.reviewText}</div>
 
         {review.reviewImages && (
           <div className="flex space-x-2 mt-4">
@@ -40,7 +40,7 @@ const ReviewCard = ({ review }) => {
                 <img
                   src={reviewImage}
                   alt="File not found"
-                  className="block h-[70px] w-auto"
+                  className="block h-[80px] w-auto"
                 />
               );
             })}

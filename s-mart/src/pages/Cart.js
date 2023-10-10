@@ -69,7 +69,7 @@ const Cart = () => {
                 </span>
               </p>
             </div>
-            <p className="font-semibold flex justify-between mt-6 text-xl text-gray-600">
+            <p className="font-semibold flex justify-between mt-6 text-xl text-gray-500">
               Total <span className="font-bold">${totalAmt}</span>
             </p>
             <button

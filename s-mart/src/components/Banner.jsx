@@ -13,7 +13,9 @@ const Banner = () => {
     setCurrentSlide(currentSlide === 3 ? 0 : (prev) => prev + 1);
   };
 
-  console.log(currentSlide);
+  const goToSlide = (index) => {
+    setCurrentSlide(index);
+  };
 
   const data = [
     "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2970&q=80",
@@ -29,7 +31,6 @@ const Banner = () => {
       {data.map((img, idx) => (
         <img
           key={idx}
-          // Tailwind CSS utility class that sets the CSS display property to block or hidden based on the conditions of whether it is the current img
           className={`w-screen h-full object-cover ${
             currentSlide === idx ? "block" : "hidden"
           }`}
@@ -39,7 +40,6 @@ const Banner = () => {
       ))}
       <div
         onClick={prevSlide}
-        //  transform -translate-y-1/2 moves the element up by half its height, resulting in a perfectly centered positioning.
         className="absolute top-1/2 left-0 ml-4 transform -translate-y-1/2 cursor-pointer"
       >
         <FaArrowCircleLeft className="text-5xl text-white hover:text-gray-600" />
@@ -49,6 +49,18 @@ const Banner = () => {
         className="absolute top-1/2 right-0 mr-4 transform -translate-y-1/2 cursor-pointer"
       >
         <FaArrowCircleRight className="text-5xl text-white hover:text-gray-600" />
+      </div>
+
+      <div className="absolute bottom-0 mb-8 w-full flex justify-center space-x-4">
+        {data.map((_, idx) => (
+          <div
+            key={idx}
+            className={`h-3 w-3 rounded-full cursor-pointer ${
+              currentSlide === idx ? "bg-gray-100" : "bg-gray-600 "
+            }`}
+            onClick={() => goToSlide(idx)}
+          />
+        ))}
       </div>
     </div>
   );
