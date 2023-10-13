@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
 import CartItems from "../components/CartItems";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { resetCart } from "../redux/smartSlice";
 import { ToastContainer, toast } from "react-toastify";
 import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
 import { useUser } from "../contexts/userContext";
+import { writeOrderData } from "../api/firebase-database";
 
 const Cart = () => {
   const productData = useSelector((state) => state.smart.productData);
   // const userInfo = useSelector((state) => state.smart.userInfo);
   const { user } = useUser();
+  const dispatch = useDispatch();
   const [totalAmt, setTotalAmt] = useState("");
   const [payNow, setPayNow] = useState(false);
 
@@ -34,10 +37,18 @@ const Cart = () => {
   };
 
   const payment = async (token) => {
-    await axios.post("http://localhost:8000/pay", {
-      amount: totalAmt * 100,
-      token: token,
-    });
+    await axios
+      .post("http://localhost:8000/pay", {
+        amount: totalAmt * 100,
+        token: token,
+      })
+      .then(console.log("payment success", productData))
+      .then(writeOrderData(user.uid, productData, totalAmt))
+      .then(dispatch(resetCart()))
+      .then(toast.success("Order placed!"))
+      .catch((error) => {
+        console.log("Payment Error:", error);
+      });
   };
 
   return (

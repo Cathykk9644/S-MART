@@ -6,6 +6,7 @@ import Cart from "./pages/Cart";
 import SignIn from "./pages/SignIn";
 import Register from "./pages/Register";
 import Profile from "./pages/Profile";
+import Orders from "./pages/Orders";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ProductInfo from "./components/ProductInfo";
@@ -34,6 +35,7 @@ function App() {
             <Route path="/signin" element={<SignIn />} />
             <Route path="/register" element={<Register />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/orders" element={<Orders />} />
           </Routes>
         </Layout>
       </Router>

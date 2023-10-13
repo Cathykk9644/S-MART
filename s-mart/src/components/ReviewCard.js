@@ -1,18 +1,35 @@
 import React, { useState, useEffect } from "react";
-import { useUser } from "../contexts/userContext";
 import { AiFillStar } from "react-icons/ai";
 import { BiSolidUser } from "react-icons/bi";
 
-const ReviewCard = ({ review }) => {
+const ReviewCard = ({ review, users }) => {
+  const [userName, setUserName] = useState("User not found");
+  const [userPhoto, setUserPhoto] = useState(null);
+
+  useEffect(() => {
+    for (let user of users) {
+      if (user.id === review.userId) {
+        setUserName(user.name);
+        setUserPhoto(user.photo);
+      }
+    }
+  }, []);
+
   return (
     <div className="flex space-x-3 py-4 border-t-[1px]">
-      <BiSolidUser
-        size={32}
-        className="block rounded-full text-gray-300 border border-gray-300"
-      />
+      {userPhoto ? (
+        <img
+          src={userPhoto}
+          alt="File not found"
+          className="block h-[32px] w-auto rounded-full text-gray-300 border border-gray-300"
+        />
+      ) : (
+        <BiSolidUser className="block h-[32px] w-auto rounded-full text-gray-300 border border-gray-300" />
+      )}
+
       <div className="flex flex-col">
         <div className="flex space-x-2 items-center">
-          <div className="text-gray-700 font-semibold">Name</div>
+          <div className="text-gray-700 font-semibold">{userName}</div>
           <div className="text-gray-400 text-sm">Reviewed on {review.date}</div>
         </div>
 

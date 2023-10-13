@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useUser } from "../contexts/userContext";
 import { updateProfile, updateEmail, updatePassword } from "firebase/auth";
+import { editUserData } from "../api/firebase-database";
 import { uploadProfileImage } from "../api/firebase-storage";
 import { ToastContainer, toast } from "react-toastify";
 import { BiSolidUser } from "react-icons/bi";
@@ -18,6 +19,7 @@ const EditProfileForm = () => {
   const updateDisplayName = () => {
     updateProfile(user, { displayName: newDisplayName })
       .then(() => {
+        editUserData(user);
         toast.success("Display name updated!");
         setNewDisplayName("");
       })
@@ -55,6 +57,7 @@ const EditProfileForm = () => {
       const url = await uploadProfileImage(fileInput);
       updateProfile(user, { photoURL: url })
         .then(() => {
+          editUserData(user);
           toast.success("Display picture updated!");
           setFileInput(null);
         })

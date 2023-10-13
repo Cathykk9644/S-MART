@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { register } from "../api/firebase-authentication";
 import { useNavigate, useLocation } from "react-router-dom";
+import { editUserData } from "../api/firebase-database";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -22,6 +23,7 @@ const Register = () => {
     ) {
       const user = await register(state.email, state.password);
       if (user) {
+        editUserData(user);
         setState({
           email: "",
           password: "",

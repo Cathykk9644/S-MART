@@ -13,15 +13,17 @@ export const smartSlice = createSlice({
   reducers: {
     addToCart: (state, action) => {
       const item = state.productData.find(
-        (item) => item._id === action.payload
+        (item) => item._id === action.payload._id
       );
 
       // It tries to find a product in productData whose _id matches the payload of the action.
       // If such a product is found, it increases the product's quantity by the quantity in the payload.
       // If no such product is found, it adds the payload to productData.
       if (item) {
+        console.log("incremented");
         item.quantity += action.payload.quantity;
       } else {
+        console.log("pushed");
         state.productData.push(action.payload);
         // payload is any data that should be used by the action.
       }
