@@ -17,7 +17,6 @@ const Search = () => {
 
   return (
     <div>
-      <div>Search terms: {searchTerms}</div>
       <Products products={searchResults} />
     </div>
   );

@@ -14,12 +14,12 @@ const OrderCard = ({ order }) => {
   };
 
   return (
-    <div className="flex flex-col px-6 py-2 border-2 rounded-md">
+    <div className="flex flex-col px-6 py-2 border-[1px] rounded-md">
       <div className="text-gray-500 text-lg font-semibold py-2 leading-6">
         Order Date: {order.date}
       </div>
       {order.orderData.map((item) => (
-        <div key={item._id} className="flex w-full py-2 border-t-[1px] gap-4">
+        <div key={item._id} className="flex w-full py-2  gap-4">
           <img
             onClick={() => handleNavigate(item)}
             className="h-24 w-24 object-cover rounded-sm cursor-pointer hover:scale-105 duration-300 ml-2"
@@ -42,7 +42,7 @@ const OrderCard = ({ order }) => {
           {/* </div> */}
         </div>
       ))}
-      <div className="w-full py-2 text-lg text-end text-gray-500 font-semibold leading-6 border-t-[1px] pr-6">
+      <div className="w-full py-4 text-lg text-end text-gray-500 font-semibold leading-6 border-t-[1px] pr-6 mt-4">
         Total: ${order.totalAmt}
       </div>
     </div>
