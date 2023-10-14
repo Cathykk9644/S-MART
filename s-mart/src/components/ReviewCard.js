@@ -21,7 +21,7 @@ const ReviewCard = ({ review, users }) => {
         <img
           src={userPhoto}
           alt="File not found"
-          className="block h-[32px] w-auto rounded-full text-gray-300 border border-gray-300"
+          className="block h-9 w-9 rounded-full text-gray-300 border border-gray-300"
         />
       ) : (
         <BiSolidUser className="block h-[32px] w-auto rounded-full text-gray-300 border border-gray-300" />

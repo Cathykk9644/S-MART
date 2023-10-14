@@ -29,7 +29,7 @@ const HeaderUserDropdown = () => {
         <RiArrowDropDownLine className="text-3xl" />
       </div>
       {dropdownVisible && (
-        <div className="absolute z-20 bg-white min-w-[140px] rounded-lg border-[1px] mt-1 ml-2">
+        <div className="absolute z-20 bg-white min-w-[140px] rounded-lg border-[1px]  ml-2">
           <ul>
             <li>
               <button
@@ -42,7 +42,7 @@ const HeaderUserDropdown = () => {
             <li>
               <button
                 onClick={() => navigate("/orders")}
-                className="text-sm w-full text-left leading-8 px-2 text-teal-500 hover:text-white hover:bg-teal-500 duration-200 hover:font-bold"
+                className="text-sm w-full text-left leading-8 px-4 text-gray-400 hover:text-white hover:bg-teal-500 duration-200 hover:font-bold"
               >
                 My Orders
               </button>
