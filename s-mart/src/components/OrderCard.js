@@ -15,7 +15,7 @@ const OrderCard = ({ order }) => {
 
   return (
     <div className="flex flex-col px-6 py-2 border-2 rounded-md">
-      <div className="text-gray-700 text-lg font-semibold py-2 leading-6">
+      <div className="text-gray-500 text-lg font-semibold py-2 leading-6">
         Order Date: {order.date}
       </div>
       {order.orderData.map((item) => (
@@ -30,19 +30,19 @@ const OrderCard = ({ order }) => {
           <div className="flex flex-col space-y-2">
             <div
               onClick={() => handleNavigate(item)}
-              className="text-gray-700 font-semibold cursor-pointer hover:text-teal-600 hover:underline"
+              className="text-gray-500 font-semibold cursor-pointer hover:text-teal-600 hover:underline"
             >
               {item.title}
             </div>
             <div className="text-gray-400">Quantity: {item.quantity}</div>
           </div>
-          <div className="text-gray-700 ml-auto h-full my-auto pr-6">
+          <div className="text-gray-500 ml-auto h-full my-auto pr-6">
             ${(item.price * item.quantity).toFixed(2)}
           </div>
           {/* </div> */}
         </div>
       ))}
-      <div className="w-full py-2 text-lg text-end text-gray-700 font-semibold leading-6 border-t-[1px] pr-6">
+      <div className="w-full py-2 text-lg text-end text-gray-500 font-semibold leading-6 border-t-[1px] pr-6">
         Total: ${order.totalAmt}
       </div>
     </div>
