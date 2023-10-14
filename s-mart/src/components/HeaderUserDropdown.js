@@ -29,25 +29,25 @@ const HeaderUserDropdown = () => {
         <RiArrowDropDownLine className="text-3xl" />
       </div>
       {dropdownVisible && (
-        <div className="absolute z-20 bg-white min-w-[140px] rounded-lg border-[1px] mt-1 ">
+        <div className="absolute z-20 bg-white min-w-[140px] rounded-lg border-[1px] mt-1 ml-2">
           <ul>
             <li>
               <button
                 onClick={() => navigate("/profile")}
-                className="w-full text-left leading-8 px-2 text-gray-400 hover:text-white hover:bg-teal-500 duration-200 hover:font-bold text-sm"
+                className="w-full text-left leading-8 px-4 text-gray-400 hover:text-white hover:bg-teal-500 duration-200 hover:font-bold text-sm"
               >
                 My Profile
               </button>
             </li>
             <li>
-              <button className="text-sm w-full text-left leading-8 px-2 text-gray-400 hover:text-white hover:bg-teal-500 duration-200 hover:font-bold">
+              <button className="text-sm w-full text-left leading-8 px-4 text-gray-400 hover:text-white hover:bg-teal-500 duration-200 hover:font-bold">
                 My Purchases
               </button>
             </li>
             <li>
               <button
                 onClick={async () => await logOut()}
-                className=" text-sm w-full text-left leading-8 px-2 text-gray-400 hover:text-white hover:bg-teal-500 duration-200 hover:font-bold"
+                className=" text-sm w-full text-left leading-8 px-4 text-gray-400 hover:text-white hover:bg-teal-500 duration-200 hover:font-bold"
               >
                 Sign Out
               </button>

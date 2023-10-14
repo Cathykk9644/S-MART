@@ -42,13 +42,13 @@ const Banner = () => {
         onClick={prevSlide}
         className="absolute top-1/2 left-0 ml-4 transform -translate-y-1/2 cursor-pointer"
       >
-        <FaArrowCircleLeft className="text-5xl text-white hover:text-gray-600" />
+        <FaArrowCircleLeft className="sm:text-5xl text-3xl text-white hover:text-gray-600" />
       </div>
       <div
         onClick={nextSlide}
         className="absolute top-1/2 right-0 mr-4 transform -translate-y-1/2 cursor-pointer"
       >
-        <FaArrowCircleRight className="text-5xl text-white hover:text-gray-600" />
+        <FaArrowCircleRight className="sm:text-5xl text-3xl text-white hover:text-gray-600" />
       </div>
 
       <div className="absolute bottom-0 mb-8 w-full flex justify-center space-x-4">

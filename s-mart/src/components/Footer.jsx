@@ -11,16 +11,16 @@ const Footer = () => {
   return (
     <div className="bg-teal-500 text-white px-10 py-10 relative">
       <div className="max-w-screen-xl mx-auto flex flex-col sm:flex-row justify-between items-center">
-        <div className="text-xs sm:flex sm:gap-40">
+        <div className="text-xs sm:flex flex wrap sm:gap-40">
           <div>
-            <h3 className="font-bold text-2xl mb-2">S-MART</h3>
+            <h3 className="font-bold sm:text-2xl text-lg mb-2">S-MART</h3>
             <p>123 Fake St,</p>
             <p>Faketown, FK 12345</p>
             <p>Email: info@smart.com</p>
             <p>Phone: (123) 456-7890</p>
           </div>
           <div>
-            <h3 className="font-bold text-2xl mb-2">Profile</h3>
+            <h3 className="font-bold sm:text-2xl text-lg mb-2">Profile</h3>
             <p className="hover:text-gray-600 cursor-pointer">
               <AiOutlineUser className="inline-block mr-1" /> User Account
             </p>
@@ -36,7 +36,7 @@ const Footer = () => {
             </p>
           </div>
         </div>
-        <div className="flex space-x-3 mt-5 sm:mt-0">
+        <div className="flex space-x-3 mt-5 sm:mt-0 ">
           <a
             className="hover:text-gray-600 cursor-pointer"
             href="https://www.facebook.com"

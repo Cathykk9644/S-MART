@@ -7,6 +7,11 @@ module.exports = {
         titleFont: "Poppins",
         bodyFont: "Nunito Sans",
       },
+      screens: {
+        sm: "478px",
+        md: "820px",
+        lg: "1028px",
+      },
     },
   },
   plugins: [],

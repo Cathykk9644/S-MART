@@ -11,6 +11,7 @@ import { fetchReviewData } from "../api/firebase-database";
 const ProductInfo = () => {
   const dispatch = useDispatch();
   const location = useLocation();
+
   const details = location.state.item;
 
   const [baseQty, setBaseQty] = useState(1);

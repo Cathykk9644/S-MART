@@ -25,20 +25,28 @@ const Header = () => {
     setSearchTerms("");
   };
 
+  const totalQuantity = productData.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
+
   return (
     <>
       <div className="fixed z-50 w-full h-28 bg-white border-b-gray-200 border-b-[1px]">
         <div>
-          <div className="max-w-screen-xl h-full mx-auto mt-8 mb-4 flex items-center justify-between">
-            <div className="flex items-center gap-6">
+          <div className="max-w-screen-xl h-full mx-auto mt-8 mb-4 flex flex-col sm:flex-row items-center justify-center sm:justify-between">
+            <div className="flex items-center justify-center gap-6">
               <Link to="/">
                 <img className="w-28.5 h-12" src={logo} alt="store-logo" />
               </Link>
               {/* Search Bar */}
-              <form onSubmit={handleSearch} className="relative">
+              <form
+                onSubmit={handleSearch}
+                className="relative w-full sm:w-auto"
+              >
                 <AiOutlineSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                 <input
-                  className="border-2 border-gray-300 bg-white w-80 h-10 px-5 pl-10 pr-10 rounded-full text-sm focus:outline-none hover:border-gray-400"
+                  className="border-2 border-gray-300 bg-white sm:w-80 w-55 h-10 px-5 pl-10 pr-10 rounded-full text-sm focus:outline-none hover:border-gray-400"
                   type="search"
                   name="search"
                   placeholder="Search"
@@ -49,7 +57,7 @@ const Header = () => {
               </form>
             </div>
 
-            <div className="flex items-center gap-6">
+            <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-6">
               <ul className="flex items-center gap-6">
                 <li
                   onClick={() => navigate("/")}
@@ -95,10 +103,10 @@ const Header = () => {
 
                       <span
                         className={`absolute w-6 top-2 left-0 text-sm flex items-center justify-center font-bold text-teal-500 ${
-                          productData.length > 0 ? "text-teal-600" : ""
+                          totalQuantity > 0 ? "text-teal-600" : ""
                         }`}
                       >
-                        {productData.length}
+                        {totalQuantity}
                       </span>
                     </div>
                   </Link>
