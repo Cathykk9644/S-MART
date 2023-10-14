@@ -40,8 +40,11 @@ const HeaderUserDropdown = () => {
               </button>
             </li>
             <li>
-              <button className="text-sm w-full text-left leading-8 px-4 text-gray-400 hover:text-white hover:bg-teal-500 duration-200 hover:font-bold">
-                My Purchases
+              <button
+                onClick={() => navigate("/orders")}
+                className="text-sm w-full text-left leading-8 px-2 text-teal-500 hover:text-white hover:bg-teal-500 duration-200 hover:font-bold"
+              >
+                My Orders
               </button>
             </li>
             <li>

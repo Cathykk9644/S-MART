@@ -20,8 +20,10 @@ export const smartSlice = createSlice({
       // If such a product is found, it increases the product's quantity by the quantity in the payload.
       // If no such product is found, it adds the payload to productData.
       if (item) {
+        console.log("incremented");
         item.quantity += action.payload.quantity;
       } else {
+        console.log("pushed");
         state.productData.push(action.payload);
         // payload is any data that should be used by the action.
       }

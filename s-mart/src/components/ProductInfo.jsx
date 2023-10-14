@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, Link } from "react-router-dom";
-import { AiFillStar } from "react-icons/ai";
+import AverageStars from "./AverageStars";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/smartSlice";
 import { ToastContainer, toast } from "react-toastify";
 import ReviewForm from "./ReviewForm";
 import ReviewCard from "./ReviewCard";
-import { fetchReviewData } from "../api/firebase-database";
+import { fetchReviewData, fetchUserData } from "../api/firebase-database";
 
 const ProductInfo = () => {
   const dispatch = useDispatch();
@@ -17,12 +17,15 @@ const ProductInfo = () => {
   const [baseQty, setBaseQty] = useState(1);
 
   const [reviews, setReviews] = useState([]);
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    console.log("effect run");
+    window.scrollTo(0, 0);
     fetchReviewData(details.title, (data) => {
       setReviews((reviews) => [...reviews, data.val()]);
-      console.log(data.val());
+    });
+    fetchUserData((data) => {
+      setUsers((users) => [...users, data.val()]);
     });
   }, []);
 
@@ -57,14 +60,11 @@ const ProductInfo = () => {
               </p>
             </div>
             <div className="flex items-center gap-2 mt-3">
-              <div className="flex text-gray-600">
-                <AiFillStar />
-                <AiFillStar />
-                <AiFillStar />
-                <AiFillStar />
-                <AiFillStar />
-              </div>
-              <p className="text-xs text-gray-400">(14 customer review)</p>
+              <p className="text-gray-700">Score:</p>
+              <AverageStars reviews={reviews} />
+              <p className="text-xs text-gray-400">
+                ({reviews.length} customer review{reviews.length !== 1 && "s"})
+              </p>
             </div>
             <p className="text-gray-500 mt-3">{details.description}</p>
             <div className="flex gap-8">
@@ -116,7 +116,7 @@ const ProductInfo = () => {
           <ReviewForm product={details} />
           <div className="flex flex-col-reverse w-full ">
             {reviews.map((review) => (
-              <ReviewCard review={review} />
+              <ReviewCard review={review} users={users} />
             ))}
           </div>
         </div>

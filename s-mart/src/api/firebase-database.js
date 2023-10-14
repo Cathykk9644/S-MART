@@ -9,6 +9,9 @@ import {
 } from "firebase/database";
 import { database } from "../firebase";
 const REVIEW_DATABASE_KEY = "products";
+const USER_DATABASE_KEY = "users";
+const ORDER_DATABASE_KEY = "orders";
+
 // * load all data
 export const fetchReviewData = (productTitle, callback) => {
   const productListRef = ref(
@@ -16,6 +19,16 @@ export const fetchReviewData = (productTitle, callback) => {
     `${REVIEW_DATABASE_KEY}/${productTitle}`
   );
   onChildAdded(productListRef, callback);
+};
+
+export const fetchOrderData = (userId, callback) => {
+  const orderRef = ref(database, `${ORDER_DATABASE_KEY}/${userId}`);
+  onChildAdded(orderRef, callback);
+};
+
+export const fetchUserData = (callback) => {
+  const userRef = ref(database, `${USER_DATABASE_KEY}`);
+  onChildAdded(userRef, callback);
 };
 // * get specific data
 export const getSpecificData = (productTitle) => {
@@ -37,17 +50,8 @@ export const deleteData = (productKey) => {
     console.log(`${productKey} removed`);
   });
 };
+
 // * create new data
-// export const writeData = (data) => {
-//   const productListRef = ref(database, REVIEW_DATABASE_KEY);
-//   const newReviewRef = push(productListRef);
-//   set(newReviewRef, {
-//     name: data.name,
-//     description: data.description,
-//     url: data.url,
-//     date: new Date().toLocaleTimeString(),
-//   });
-// };
 export const writeReviewData = (
   userId,
   reviewText,
@@ -72,11 +76,28 @@ export const writeReviewData = (
     }),
   });
 };
+
+export const writeOrderData = (userId, orderData, totalAmt) => {
+  const orderRef = ref(database, `${ORDER_DATABASE_KEY}/${userId}`);
+  const newOrderRef = push(orderRef);
+  set(newOrderRef, {
+    userId: userId,
+    orderData: orderData,
+    totalAmt: totalAmt,
+    date: new Date().toLocaleDateString("en-GB", {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+    }),
+  });
+};
+
 // * edit specific data
-// export const editData = (productKey, data) => {
-//   const productListRef = ref(database, `${REVIEW_DATABASE_KEY}/${productKey}`);
-//   set(productListRef, {
-//     name: data.name,
-//     description: data.description,
-//   });
-// };
+export const editUserData = (user) => {
+  const userRef = ref(database, `${USER_DATABASE_KEY}/${user.uid}`);
+  set(userRef, {
+    id: user.uid,
+    name: user.displayName ? user.displayName : user.email,
+    photo: user.photoURL ? user.photoURL : null,
+  });
+};

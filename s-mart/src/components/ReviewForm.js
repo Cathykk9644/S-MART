@@ -13,7 +13,6 @@ const ReviewForm = ({ product }) => {
   const [submitted, setSubmitted] = useState(false);
 
   const submitReview = async () => {
-    // TODO create this function, passing review text, image, score, user id, time of post
     const images = [];
     for (let image of reviewImages) {
       images.push(await uploadReviewImage(image));
