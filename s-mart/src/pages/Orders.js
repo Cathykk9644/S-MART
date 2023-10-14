@@ -29,7 +29,7 @@ const Orders = () => {
       />
 
       <div className="max-w-screen-xl mx-auto my-auto py-8 flex flex-col">
-        <h2 className="text-gray-700 text-2xl font-bold mb-4">Your Orders</h2>
+        <h2 className="text-gray-500 text-2xl font-bold mb-4">Your Orders</h2>
         <div className="flex flex-col-reverse w-full gap-6">
           {orders.map((order) => (
             <OrderCard order={order} />
