@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { AiOutlineSearch } from "react-icons/ai";
+
 import { cart, logo } from "../assets/index";
 import { useUser } from "../contexts/userContext";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -7,6 +7,7 @@ import HeaderUserDropdown from "./HeaderUserDropdown";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { AiOutlineShopping } from "react-icons/ai";
+import { AiOutlineSearch } from "react-icons/ai";
 
 const Header = () => {
   const { user } = useUser();
