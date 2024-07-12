@@ -55,8 +55,8 @@ const Banner = () => {
         {data.map((_, idx) => (
           <div
             key={idx}
-            className={`h-3 w-3 rounded-full cursor-pointer ${
-              currentSlide === idx ? "bg-gray-100" : "bg-gray-600 "
+            className={`sm:h-3 sm:w-3 h-2 w-2 rounded-full cursor-pointer ${
+              currentSlide === idx ? "bg-gray-100" : "bg-gray-700 "
             }`}
             onClick={() => goToSlide(idx)}
           />

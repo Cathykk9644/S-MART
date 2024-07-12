@@ -8,7 +8,6 @@ import { ToastContainer, toast } from "react-toastify";
 const SignIn = () => {
   // Add user from redux store
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
   const location = useLocation();
   const { from } = location.state || { from: { pathname: "/" } };
