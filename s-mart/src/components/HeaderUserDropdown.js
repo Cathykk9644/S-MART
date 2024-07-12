@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useUser } from "../contexts/userContext";
 import { logOut } from "../api/firebase-authentication";
 import { useNavigate } from "react-router-dom";
-import { RiArrowDropDownLine, RiArrowUpDownLine } from "react-icons/ri";
+import { RiArrowDropDownLine } from "react-icons/ri";
 
 const HeaderUserDropdown = () => {
   const { user } = useUser();
@@ -22,13 +22,11 @@ const HeaderUserDropdown = () => {
             className="object-cover h-8 w-8 rounded-full border border-gray-300 mr-2"
           />
         ) : (
-          <RiArrowDropDownLine className="inline-block h-4 w-4 rounded-full text-gray-300 border border-gray-300 mr-1 text-xs sm:text-sm" />
+          <span className="text-sm sm:text-md">
+            {user.displayName ? user.displayName : user.email}
+          </span>
         )}
-        {"  "}
-        <span className="text-sm sm:text-md">
-          {user.displayName ? user.displayName : user.email}
-        </span>
-    
+
         <RiArrowDropDownLine className="sm:text-3xl text-2xl" />
       </div>
       {dropdownVisible && (
