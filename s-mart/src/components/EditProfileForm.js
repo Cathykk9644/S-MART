@@ -4,7 +4,8 @@ import { updateProfile, updateEmail, updatePassword } from "firebase/auth";
 import { editUserData } from "../api/firebase-database";
 import { uploadProfileImage } from "../api/firebase-storage";
 import { ToastContainer, toast } from "react-toastify";
-import { BiSolidUser } from "react-icons/bi";
+
+import { FaUserCircle } from "react-icons/fa";
 
 const EditProfileForm = () => {
   const { user } = useUser();
@@ -73,16 +74,16 @@ const EditProfileForm = () => {
   };
 
   return (
-    <div className="flex h-[70vh] justify-center items-center bg-slate-100">
-      <div className="flex items-center justify-around h-full sm:max-w-[60vw] sm:w-full bg-white">
+    <div className="flex flex-col sm:flex-row sm:h-[70vh] justify-center items-center bg-slate-100">
+      <div className="flex flex-col sm:flex-row items-center justify-around h-full sm:max-w-[60vw] sm:w-full bg-white">
         {/* Update profile details other than display picture */}
-        <div className="flex flex-col items-center justify-start w-1/2 h-2/3 px-7 space-y-6">
+        <div className="flex flex-col items-center justify-start w-full sm:w-1/2 h-2/3 px-7 space-y-6">
           {/* Update email */}
-          <div className="w-full">
+          <div className="w-full text-sm">
             <label className="block text-gray-500">Email</label>
             <div className="flex items-center space-x-6 mt-2">
               <input
-                className="block w-3/5 rounded-md border-0 p-2 text-gray-500 text-xs shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-0 focus:ring-1 focus:ring-inset focus:ring-teal-500"
+                className="block w-3/5 rounded-md border-0 p-2 text-gray-500 text-[10px] shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-0 focus:ring-1 focus:ring-inset focus:ring-teal-500"
                 type="text"
                 name="email"
                 placeholder={user ? user.email : "Your Email"}
@@ -92,18 +93,19 @@ const EditProfileForm = () => {
               />
               <button
                 onClick={updateUserEmail}
-                className="flex w-1/3 justify-center items-center rounded-md py-1 bg-teal-500 text-sm leading-6 text-white shadow-sm hover:bg-teal-600"
+                className="flex w-1/3 justify-center items-center rounded-md py-1 bg-teal-500 text-[10px] sm:text-sm leading-6 text-white shadow-sm hover:bg-teal-600 "
               >
                 Update Email
               </button>
             </div>
           </div>
+
           {/* Update display name */}
-          <div className="w-full">
+          <div className="w-full text-sm">
             <label className="block text-gray-500 ">Name</label>
             <div className="flex items-center space-x-6 mt-2">
               <input
-                className="block w-3/5 rounded-md border-0 p-2 text-gray-500 text-xs shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-0 focus:ring-1 focus:ring-inset focus:ring-teal-500"
+                className="block w-3/5 rounded-md border-0 p-2 text-gray-500 text-[10px] shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-0 focus:ring-1 focus:ring-inset focus:ring-teal-500"
                 type="text"
                 name="email"
                 placeholder={
@@ -117,20 +119,21 @@ const EditProfileForm = () => {
               />
               <button
                 onClick={updateDisplayName}
-                className="flex w-1/3 justify-center items-center rounded-md py-1 bg-teal-500 text-sm leading-6 text-white shadow-sm hover:bg-teal-600"
+                className="flex w-1/3 justify-center items-center rounded-md py-1 bg-teal-500 text-[10px] my-2 sm:text-sm leading-6 text-white shadow-sm hover:bg-teal-600"
               >
                 Update Name
               </button>
             </div>
           </div>
+
           {/* Update password */}
-          <div className="w-full">
+          <div className="w-full text-sm">
             <label className="block text-gray-500">Password</label>
 
             <div className="flex items-start space-x-6 mt-2">
               <div className="flex flex-col w-3/5 space-y-2">
                 <input
-                  className="block w-full rounded-md border-0 p-2 text-gray-500 text-xs shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-0 focus:ring-1 focus:ring-inset focus:ring-teal-500"
+                  className="block w-full rounded-md border-0 p-2 text-gray-500 text-[10px] shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-0 focus:ring-1 focus:ring-inset focus:ring-teal-500"
                   type="password"
                   name="password"
                   placeholder={"New Password"}
@@ -144,10 +147,10 @@ const EditProfileForm = () => {
                   }
                 />
                 <input
-                  className="block w-full rounded-md border-0 p-2 text-gray-500 text-xs shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-0 focus:ring-1 focus:ring-inset focus:ring-teal-500"
+                  className="block w-full rounded-md border-0 p-2 text-gray-500 text-[10px] shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-0 focus:ring-1 focus:ring-inset focus:ring-teal-500"
                   type="password"
                   name="retypePassword"
-                  placeholder={"Retype Password"}
+                  placeholder={"New Password Again"}
                   value={newPassword.retypePassword}
                   required
                   onChange={(e) =>
@@ -158,10 +161,10 @@ const EditProfileForm = () => {
                   }
                 />
               </div>
-              <div className="flex flex-col w-1/3 space-y-2 ">
+              <div className="flex flex-col w-1/3 space-y-4 ">
                 <button
                   onClick={updateUserPassword}
-                  className="flex w-full justify-center items-center rounded-md py-1 bg-teal-500 text-sm leading-6 text-white shadow-sm hover:bg-teal-600"
+                  className="flex w-full justify-center items-center rounded-md py-1 bg-teal-500 text-[10px] sm:text-sm leading-6 text-white shadow-sm hover:bg-teal-600"
                 >
                   Update Password
                 </button>
@@ -176,8 +179,9 @@ const EditProfileForm = () => {
             </div>
           </div>
         </div>
+
         {/* Update display picture */}
-        <div className="flex flex-col items-center justify-start w-2/5 h-2/3 border-l-[1px] space-y-4 gap-2">
+        <div className="flex flex-col p-4 items-center justify-start mt-8 w-full sm:w-2/5 h-2/3 sm:border-l-[1px] space-y-4 gap-2">
           {user.photoURL ? (
             <img
               src={user.photoURL}
@@ -185,19 +189,18 @@ const EditProfileForm = () => {
               className="object-cover w-36 h-36 rounded-full border border-gray-300"
             />
           ) : (
-            <BiSolidUser className="block w-1/3 h-auto rounded-full text-gray-300 border border-gray-300" />
+            <FaUserCircle className="block w-1/3 h-auto rounded-full text-slate-200 border border-gray-300" />
           )}
-          {/* TODO: What does this do ? */}
 
           <input
-            className="block w-1/2 cursor-pointer rounded-lg border shadow-sm file:cursor-pointer file:bg-white file:border-0 file:text-teal-700 file:hover:text-white file:hover:bg-teal-500 text-sm file:leading-7 file:px-2 text-gray-700 border-gray-300 bg-gray-200 overflow-hidden"
+            className="block w-1/2 cursor-pointer rounded-lg border shadow-sm file:cursor-pointer file:bg-white file:border-0 file:text-teal-700 file:hover:text-white file:hover:bg-teal-500 text-xs sm:text-sm file:leading-6 file:px-2 text-gray-700 border-gray-300 bg-gray-200 overflow-hidden"
             type="file"
             name="file"
             onChange={(e) => setFileInput(e.target.files[0])}
           />
           <button
             onClick={updateDisplayPicture}
-            className="flex w-1/2 justify-center items-center rounded-md py-1 bg-teal-500 text-sm leading-6 text-white shadow-sm hover:bg-teal-600"
+            className="flex w-1/2 justify-center items-center rounded-md py-1 bg-teal-500 text-xs sm:text-sm leading-6 text-white shadow-sm hover:bg-teal-600"
           >
             Update Picture
           </button>
