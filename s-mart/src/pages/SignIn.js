@@ -100,7 +100,7 @@ const SignIn = () => {
               state: { from: from },
             })
           }
-          className="w-full mt-4 text-center text-xs text-teal-500 hover:text-teal-700 hover:font-semibold hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-200"
+          className="w-full mt-4 text-center text-xs text-teal-500 hover:text-teal-700 hover:font-semibold hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-200 cursor:pointer hover:text-[10px]"
         >
           New to S-Mart? Sign up here.
         </button>
