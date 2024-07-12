@@ -13,6 +13,7 @@ const ProductInfo = () => {
   const location = useLocation();
 
   const details = location.state.item;
+  console.log("Location state:", location.state);
 
   const [baseQty, setBaseQty] = useState(1);
 

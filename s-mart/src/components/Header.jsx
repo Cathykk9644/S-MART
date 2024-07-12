@@ -32,7 +32,7 @@ const Header = () => {
 
   return (
     <>
-      <div className="fixed z-50 w-full h-28 bg-white border-b-gray-200 border-b-[1px] ">
+      <div className="fixed z-50 w-full h-auto sm:h-28 bg-white border-b-gray-200 ">
         <div className="mx-2">
           <div className="max-w-screen-xl h-full mx-auto mt-8 mb-4 flex items-center justify-between">
             <div className="flex items-center gap-4 sm:gap-6">
@@ -125,8 +125,8 @@ const Header = () => {
           </div>
           {/* Hamburger Menu */}
           {menuOpen && (
-            <div className="sm:hidden flex flex-col items-center gap-4 mt-4 bg-white">
-              <ul className="flex flex-col items-start gap-4">
+            <div className="sm:hidden flex flex-col gap-4 px-2 py-4 bg-slate-50 items-start">
+              <ul className="flex flex-col gap-4 ml-2">
                 <li
                   onClick={() => {
                     navigate("/");

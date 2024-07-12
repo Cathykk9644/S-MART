@@ -14,7 +14,7 @@ const HeaderUserDropdown = () => {
       onMouseEnter={() => setDropdownVisible(true)}
       onMouseLeave={() => setDropdownVisible(false)}
     >
-      <div className="flex items-center leading-6 px-2 text-teal-500 hover:text-teal-700 hover:underline underline-offset-2 decoration-[1px] duration-200 hover:font-bold ">
+      <div className="flex items-center leading-6 sm:px-2 text-teal-500 hover:text-teal-700 hover:underline underline-offset-2 decoration-[1px] duration-200 hover:font-bold ">
         {user.photoURL ? (
           <img
             src={user.photoURL}
@@ -22,11 +22,14 @@ const HeaderUserDropdown = () => {
             className="object-cover h-8 w-8 rounded-full border border-gray-300 mr-2"
           />
         ) : (
-          <RiArrowDropDownLine className="inline-block h-4 w-4 rounded-full text-gray-300 border border-gray-300 mr-1 text-sm" />
+          <RiArrowDropDownLine className="inline-block h-4 w-4 rounded-full text-gray-300 border border-gray-300 mr-1 text-xs sm:text-sm" />
         )}
         {"  "}
-        {user.displayName ? user.displayName : user.email}
-        <RiArrowDropDownLine className="text-3xl" />
+        <span className="text-sm sm:text-md">
+          {user.displayName ? user.displayName : user.email}
+        </span>
+        {/* {user.displayName ? user.displayName : user.email} */}
+        <RiArrowDropDownLine className="sm:text-3xl text-2xl" />
       </div>
       {dropdownVisible && (
         <div className="absolute z-20 bg-white min-w-[140px] rounded-lg border-[1px]  ml-2">
