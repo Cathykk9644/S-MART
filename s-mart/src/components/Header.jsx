@@ -32,7 +32,7 @@ const Header = () => {
 
   return (
     <>
-      <div className="fixed z-50 w-full h-auto sm:h-28 bg-white border-b-gray-200 ">
+      <div className="fixed z-50 w-full h-auto sm:h-28 bg-white border-b-gray-200 sm:border-b-[1px]">
         <div className="mx-2">
           <div className="max-w-screen-xl h-full mx-auto mt-8 mb-4 flex items-center justify-between">
             <div className="flex items-center gap-4 sm:gap-6">

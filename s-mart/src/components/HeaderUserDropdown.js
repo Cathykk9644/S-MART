@@ -28,7 +28,7 @@ const HeaderUserDropdown = () => {
         <span className="text-sm sm:text-md">
           {user.displayName ? user.displayName : user.email}
         </span>
-        {/* {user.displayName ? user.displayName : user.email} */}
+    
         <RiArrowDropDownLine className="sm:text-3xl text-2xl" />
       </div>
       {dropdownVisible && (

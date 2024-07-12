@@ -54,17 +54,17 @@ const SignIn = () => {
     <div className="flex h-[70vh] justify-center items-center">
       <div className="flex flex-col items-center justify-start h-full sm:max-w-sm sm:w-full">
         {/* <button onClick={() => console.log(location)}>Location</button> */}
-        <h2 className="mt-24 text-2xl font-bold text-gray-500">
-          Sign in to your account
+        <h2 className="mt-12 sm:mt-24 text-2xl font-bold text-gray-500">
+          Hey welcome back!
         </h2>
         <form
           className="flex flex-col items-center justify-center w-full mt-12 space-y-6"
           onSubmit={handleSubmit}
         >
           <div className="w-full">
-            <label className="block text-gray-500">Email</label>
+            <label className="block text-gray-500 text-sm">Email</label>
             <input
-              className="block w-full mt-2 rounded-md border-0 p-1.5 text-gray-900 text-xs shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-0 focus:ring-1 focus:ring-inset focus:ring-teal-500"
+              className="block w-full mt-2 rounded-md border-0 p-1.5 text-gray-900 text-[10px] shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-0 focus:ring-1 focus:ring-inset focus:ring-teal-500"
               type="text"
               name="email"
               placeholder="Your Email"
@@ -75,9 +75,9 @@ const SignIn = () => {
           </div>
 
           <div className="w-full">
-            <label className="text-gray-500">Password</label>
+            <label className="text-gray-500 text-sm">Password</label>
             <input
-              className="block w-full mt-2 rounded-md border-0 p-1.5 text-gray-500 text-xs shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-0 focus:ring-1 focus:ring-inset focus:ring-teal-500"
+              className="block w-full mt-2 rounded-md border-0 p-1.5 text-gray-500 text-[10px] shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-0 focus:ring-1 focus:ring-inset focus:ring-teal-500"
               type="password"
               name="password"
               placeholder="Your Password"
@@ -102,7 +102,7 @@ const SignIn = () => {
           }
           className="w-full mt-4 text-center text-xs text-teal-500 hover:text-teal-700 hover:font-semibold hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-200"
         >
-          No account yet? Register here.
+          New to S-Mart? Sign up here.
         </button>
       </div>
       <ToastContainer
