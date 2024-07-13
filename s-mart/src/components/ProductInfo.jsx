@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link, useNavigate } from "react-router-dom";
 import AverageStars from "./AverageStars";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/smartSlice";
@@ -11,16 +11,22 @@ import { fetchReviewData, fetchUserData } from "../api/firebase-database";
 const ProductInfo = () => {
   const dispatch = useDispatch();
   const location = useLocation();
+  const navigate = useNavigate();
 
-  const details = location.state.item;
-  console.log("Location state:", location.state);
+  // Initial check for required state
+  const details = location.state?.item;
 
   const [baseQty, setBaseQty] = useState(1);
-
   const [reviews, setReviews] = useState([]);
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
+    if (!details) {
+      toast.error("Product information is missing.");
+      setTimeout(() => navigate("/"), 2000); // Redirect user back after the message
+      return;
+    }
+
     window.scrollTo(0, 0);
     fetchReviewData(details.title, (data) => {
       setReviews((reviews) => [...reviews, data.val()]);
@@ -28,7 +34,12 @@ const ProductInfo = () => {
     fetchUserData((data) => {
       setUsers((users) => [...users, data.val()]);
     });
-  }, []);
+  }, [details, navigate]);
+
+  // Early return if details are not available
+  if (!details) {
+    return null;
+  }
 
   return (
     <div className="max-w-screen-xl mx-auto my-10 px-4 sm:px-6 lg:px-8">
