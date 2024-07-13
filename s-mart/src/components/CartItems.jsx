@@ -18,9 +18,11 @@ const CartItems = () => {
   const isEmpty = productData.length === 0;
 
   return (
-    <div className="w-2/3 pr-10 text-gray-500">
+    <div className="w-full sm:w-2/3 pr-10 text-gray-500">
       <div className="w-full">
-        <h2 className="text-2xl">Shopping Cart</h2>
+        <h2 className="text-lg sm:text-2xl text-center sm:text-start font-bold">
+          Shopping Cart
+        </h2>
       </div>
       <div>
         {isEmpty ? (
@@ -38,16 +40,16 @@ const CartItems = () => {
           productData.map((item) => (
             <div
               key={item._id}
-              className="flex items-center justify-between gap-4 mt-6"
+              className="flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-4 mt-6"
             >
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1">
                 <img
-                  className="w-28 h-28 object-cover rounded-sm"
+                  className="w-36 h-36 sm:w-28 sm:h-28 object-cover rounded-sm"
                   src={item.image}
                   alt="productImg"
                 />
               </div>
-              <h2 className="w-48">{item.title}</h2>
+              <h2 className="sm:w-48 sm:text-lg text-md">{item.title}</h2>
               <p className="w-8">${item.price}</p>
 
               {/*  quantity area */}
@@ -98,7 +100,7 @@ const CartItems = () => {
               <div>
                 <MdOutlineClose
                   onClick={() => dispatch(deleteItem(item._id))}
-                  className="text-xl font-bold hover:text-teal-600 cursor-pointer duration-300"
+                  className="text-xl font-bold hover:text-teal-600 hover:scale-90 cursor-pointer duration-300"
                 />
               </div>
             </div>
@@ -110,7 +112,7 @@ const CartItems = () => {
         <>
           <button
             onClick={() => dispatch(resetCart())}
-            className="bg-teal-500 text-white mt-8  py-1 px-6 hover:bg-teal-600 duration-300 rounded-md "
+            className="bg-teal-500 text-white mt-8  py-1 px-6 ml-12 sm:ml-0 hover:bg-teal-600 duration-300 rounded-md "
           >
             Clear cart
           </button>

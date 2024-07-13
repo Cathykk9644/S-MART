@@ -31,7 +31,9 @@ const ReviewCard = ({ review, users }) => {
 
       <div className="flex flex-col">
         <div className="flex space-x-2 items-center">
-          <div className="text-gray-500 font-semibold text-sm">{userName}</div>
+          <div className="text-gray-600 font-bold text-xs sm:text-sm">
+            {userName}
+          </div>
           <div className="text-gray-400 text-xs text-sm">
             Reviewed on {review.date}
           </div>

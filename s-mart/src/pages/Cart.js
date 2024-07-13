@@ -54,26 +54,27 @@ const Cart = () => {
   return (
     <div>
       <img
-        className="w-full h-40 object-cover opacity-80"
+        className="w-full h-40 sm:h-60 object-cover opacity-80"
         src="https://images.unsplash.com/photo-1585646794748-5c6e7890f30a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2417&q=80"
         alt="cartBgImg"
       />
 
-      <div className="max-w-screen-xl mx-auto my-auto py-12 flex ">
+      <div className="max-w-screen-xl mx-auto my-auto py-6 flex flex-col sm:flex-row">
         <CartItems />
 
         {!isEmpty && (
-          <div className="w-1/3 bg-[#f6f8f8] py-6 px-4 rounded-lg">
+          <div className="w-full sm:w-1/3 bg-[#f6f8f8] py-6 px-4 rounded-lg mt-4 ">
             <div className="flex flex-col gap-4 border-b-[1px] border-b-gray-300 pb-6">
-              <h2 className="text-2xl font-medium text-gray-500">
+              <h2 className="text-lg sm:text-2xl font-medium text-gray-500">
                 Order Summary
               </h2>
               <p className="flex items-center gap-4 text-gray-500">
-                Subtotal <span className="font-bold text-lg">${totalAmt}</span>
+                Subtotal{" "}
+                <span className="font-bold sm:text-lg">${totalAmt}</span>
               </p>
               <p className="flex items-center gap-4 text-gray-500">
                 Shipping{" "}
-                <span>
+                <span className="text-xs">
                   Lorem onsectetur adipisicinor sit, amet consectetur
                   adipisicing elit. Providdsfdent. Onsectetur adipisicin,
                   onsectetur adipisicin sdfddsdfwsdffs.

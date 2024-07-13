@@ -44,13 +44,13 @@ const ProductInfo = () => {
     <div className="max-w-screen-xl mx-auto sm:my-40 px-4 sm:px-6 lg:px-8">
       <div className="flex flex-col sm:flex-row sm:gap-10 my-10">
         {/* Product Image */}
-        <div className="w-full sm:w-2/5">
+        <div className="w-full sm:w-2/5 relative">
           <img
             className="w-full h-auto sm:h-[550px] object-cover rounded-sm"
             src={details.image}
             alt="product image"
           />
-          <div className="absolute top-6 right-0">
+          <div className="absolute top-16 sm:top-6 right-0">
             {details.isNew && (
               <p className="bg-teal-600 text-white font-semibold px-8 py-1 rounded-sm">
                 Sale
