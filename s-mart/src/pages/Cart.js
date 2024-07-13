@@ -7,10 +7,12 @@ import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
 import { useUser } from "../contexts/userContext";
 import { writeOrderData } from "../api/firebase-database";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const productData = useSelector((state) => state.smart.productData);
   // const userInfo = useSelector((state) => state.smart.userInfo);
+  const navigate = useNavigate();
   const { user } = useUser();
   const dispatch = useDispatch();
   const [totalAmt, setTotalAmt] = useState("");
@@ -32,7 +34,8 @@ const Cart = () => {
     if (user) {
       setPayNow(true);
     } else {
-      toast.error("Please sign in to Checkout");
+      toast.info("Please login first to leave a review.");
+      setTimeout(() => navigate("/signin"), 3000);
     }
   };
 
@@ -119,7 +122,7 @@ const Cart = () => {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="dark"
+        theme="light"
       />
     </div>
   );

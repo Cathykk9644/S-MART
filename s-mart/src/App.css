@@ -41,3 +41,20 @@
     font-size: 1em;
   }
 }
+
+.Toastify__toast {
+  font-family: "Quicksand", Helvetica, Arial !important;
+  --toastify-color-progress-light: #353535;
+}
+
+.Toastify__toast-body {
+  color: #444c63;
+  font-size: 0.8rem;
+  padding-left: 25px;
+  line-height: 20px;
+  padding: 0px;
+  padding-top: 5px;
+  width: 100%;
+  font-weight: 600;
+  margin-left: 25px !important;
+}

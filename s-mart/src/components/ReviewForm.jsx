@@ -4,15 +4,23 @@ import { ToastContainer, toast } from "react-toastify";
 import { AiFillStar, AiFillCheckCircle } from "react-icons/ai";
 import { writeReviewData } from "../api/firebase-database";
 import { uploadReviewImage } from "../api/firebase-storage";
+import { useNavigate } from "react-router-dom";
 
 const ReviewForm = ({ product }) => {
   const { user } = useUser();
+  const navigate = useNavigate();
   const [reviewText, setReviewText] = useState("");
   const [reviewImages, setReviewImages] = useState([]);
   const [reviewStars, setReviewStars] = useState(5);
   const [submitted, setSubmitted] = useState(false);
 
   const submitReview = async () => {
+    if (!user) {
+      toast.info("Please login first to leave a review.");
+      setTimeout(() => navigate("/signin"), 3000);
+      return;
+    }
+
     const images = [];
     for (let image of reviewImages) {
       images.push(await uploadReviewImage(image));
@@ -96,6 +104,18 @@ const ReviewForm = ({ product }) => {
               </button>
             </div>
           </div>
+          <ToastContainer
+            position="top-left"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
         </div>
       )}
     </>

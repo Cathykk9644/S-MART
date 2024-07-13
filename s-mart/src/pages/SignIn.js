@@ -54,11 +54,11 @@ const SignIn = () => {
     <div className="flex h-[70vh] justify-center items-center">
       <div className="flex flex-col items-center justify-start h-full sm:max-w-sm sm:w-full">
         {/* <button onClick={() => console.log(location)}>Location</button> */}
-        <h2 className="mt-12 sm:mt-24 text-2xl font-bold text-gray-500">
+        <h2 className="mt-24 sm:mt-44 sm:text-2xl font-bold text-gray-500">
           Hey welcome back!
         </h2>
         <form
-          className="flex flex-col items-center justify-center w-full mt-12 space-y-6"
+          className="flex flex-col items-center justify-center w-full sm:mt-12 mt-8 space-y-6"
           onSubmit={handleSubmit}
         >
           <div className="w-full">
@@ -100,7 +100,7 @@ const SignIn = () => {
               state: { from: from },
             })
           }
-          className="w-full mt-4 text-center text-xs text-teal-500 hover:text-teal-700 hover:font-semibold hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-200 cursor:pointer hover:text-[10px]"
+          className="w-full mt-4 text-center text-xs text-teal-500 hover:text-teal-700 hover:font-semibold hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-200 cursor:pointer hover:scale-90"
         >
           New to S-Mart? Sign up here.
         </button>
