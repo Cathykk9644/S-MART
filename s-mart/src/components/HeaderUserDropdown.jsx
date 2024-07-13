@@ -14,18 +14,17 @@ const HeaderUserDropdown = () => {
       onMouseEnter={() => setDropdownVisible(true)}
       onMouseLeave={() => setDropdownVisible(false)}
     >
-      <div className="flex items-center leading-6 sm:px-2 text-teal-500 hover:text-teal-700 hover:underline underline-offset-2 decoration-[1px] duration-200 hover:font-bold ">
-        {user.photoURL ? (
+      <div className="flex items-center leading-6 sm:px-2 text-teal-500 hover:text-teal-700 hover:scale-90 underline-offset-2 decoration-[1px] duration-200 hover:font-bold ">
+        {user.photoURL && (
           <img
             src={user.photoURL}
             alt="File not found"
             className="object-cover h-8 w-8 rounded-full border border-gray-300 mr-2"
           />
-        ) : (
-          <span className="text-sm sm:text-md">
-            {user.displayName ? user.displayName : user.email}
-          </span>
         )}
+        <span className="text-sm sm:text-md">
+          {user.displayName ? user.displayName : user.email}
+        </span>
 
         <RiArrowDropDownLine className="sm:text-3xl text-2xl" />
       </div>

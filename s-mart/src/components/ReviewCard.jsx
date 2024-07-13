@@ -31,11 +31,13 @@ const ReviewCard = ({ review, users }) => {
 
       <div className="flex flex-col">
         <div className="flex space-x-2 items-center">
-          <div className="text-gray-500 font-semibold">{userName}</div>
-          <div className="text-gray-400 text-sm">Reviewed on {review.date}</div>
+          <div className="text-gray-500 font-semibold text-sm">{userName}</div>
+          <div className="text-gray-400 text-xs sm:text-sm">
+            Reviewed on {review.date}
+          </div>
         </div>
 
-        <div className="flex mt-1 text-gray-500">
+        <div className="flex mt-1 text-gray-500 text-xs">
           <AiFillStar className="text-yellow-500" />
           <AiFillStar
             className={review.reviewStars > 1 ? "text-yellow-500" : ""}
@@ -50,7 +52,7 @@ const ReviewCard = ({ review, users }) => {
             className={review.reviewStars > 4 ? "text-yellow-500" : ""}
           />
         </div>
-        <div className="text-gray-500 mt-4">{review.reviewText}</div>
+        <div className="text-gray-500 mt-4 text-xs">{review.reviewText}</div>
 
         {review.reviewImages && (
           <div className="flex space-x-2 mt-4">

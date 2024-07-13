@@ -33,13 +33,12 @@ const ReviewForm = ({ product }) => {
         </div>
       ) : (
         <div className="max-w-screen-xl mx-auto my-10 flex flex-col gap-4 ">
-          <h2 className="text-xl text-gray-500 font-bold mb-2 ">
+          <h2 className="sm:text-xl text-gray-500 font-bold mb-2 hover:text-gray-600 text-md">
             Leave a Review
           </h2>
-          <div className="flex w-full space-x-8 ">
+          <div className="flex flex-col sm:flex-row w-full space-x-2 sm:space-x-8 ">
             <textarea
-              className="block w-3/5 resize-none rounded-md border-0 p-1.5 text-gray-500 text-sm shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-0 focus:ring-1 focus:ring-inset focus:ring-teal-500"
-              // type="text"
+              className="block w-auto sm:w-3/5 resize-none rounded-md border-0 p-1.5 text-gray-500 text-xs shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-0 focus:ring-1 focus:ring-inset focus:ring-teal-500"
               rows="5"
               name="reviewText"
               placeholder="Tell us what you think"
@@ -47,8 +46,8 @@ const ReviewForm = ({ product }) => {
               required
               onChange={(e) => setReviewText(e.target.value)}
             />
-            <div className="flex flex-col w-2/5 space-y-4">
-              <div className="flex items-center whitespace-pre text-gray-500">
+            <div className="flex flex-col w-auto sm:w-2/5 space-y-3 mt-3">
+              <div className="flex items-center whitespace-pre text-gray-500 text-sm">
                 {"Score:  "}
                 <AiFillStar
                   onClick={() => setReviewStars(1)}
@@ -79,10 +78,10 @@ const ReviewForm = ({ product }) => {
                   }`}
                 />
               </div>
-              <div className="flex items-center whitespace-pre text-gray-500">
+              <div className="flex items-center whitespace-pre text-gray-500 text-xs">
                 {"Images:  "}
                 <input
-                  className="block w-3/5 cursor-pointer rounded-lg border shadow-sm file:cursor-pointer file:bg-white file:border-0 file:text-teal-600 file:hover:text-white file:hover:bg-teal-600 text-sm file:leading-7 file:px-2 text-gray-500 border-gray-300 bg-gray-200 overflow-hidden"
+                  className="block w-3/5 cursor-pointer rounded-lg border shadow-sm file:cursor-pointer file:bg-white file:border-0 file:text-teal-600 file:hover:text-white file:hover:bg-teal-600 text-sm file:leading-7 file:px-2 text-gray-500 border-gray-300 bg-gray-200 overflow-hidden text-xs"
                   type="file"
                   multiple
                   name="reviewImages"
