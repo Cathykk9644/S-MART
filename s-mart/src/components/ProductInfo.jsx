@@ -41,7 +41,7 @@ const ProductInfo = () => {
   }
 
   return (
-    <div className="max-w-screen-xl mx-auto sm:my-10 px-4 sm:px-6 lg:px-8">
+    <div className="max-w-screen-xl mx-auto sm:my-40 px-4 sm:px-6 lg:px-8">
       <div className="flex flex-col sm:flex-row sm:gap-10 my-10">
         {/* Product Image */}
         <div className="w-full sm:w-2/5">
@@ -73,7 +73,9 @@ const ProductInfo = () => {
             <AverageStars reviews={reviews} />
             <p className="text-xs text-gray-400">({reviews.length} reviews)</p>
           </div>
-          <p className="text-xs sm:mt-3 text-gray-500">{details.description}</p>
+          <p className="text-xs sm:text-lg sm:mt-3 text-gray-500">
+            {details.description}
+          </p>
           <div className="flex gap-8">
             {/* Quantity and Add to Cart Button */}
 

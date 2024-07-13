@@ -5,6 +5,7 @@ import { useUser } from "../contexts/userContext";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import HeaderUserDropdown from "./HeaderUserDropdown";
 import { useSelector } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
 
 const Header = () => {
   const { user } = useUser();
@@ -72,7 +73,7 @@ const Header = () => {
               <ul className="flex items-center gap-6">
                 <li
                   onClick={() => navigate("/")}
-                  className="text-teal-500 hover:text-teal-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-200 hover:font-bold text-xs sm:text-sm"
+                  className="text-teal-500 hover:text-teal-700 hover:scale-90 underline-offset-2 decoration-[1px] cursor-pointer duration-200 hover:font-bold text-xs sm:text-sm"
                 >
                   Home
                 </li>
@@ -108,7 +109,7 @@ const Header = () => {
                 )}
                 <li>
                   <Link to="/cart">
-                    <div className="relative">
+                    <div className="relative hover:scale-90 ">
                       <img className="w-4 sm:w-6" src={cart} alt="cart-image" />
                       <span
                         className={`absolute w-6 top-2 left-0 text-sm flex items-center justify-center font-bold text-teal-500 ${
@@ -187,7 +188,7 @@ const Header = () => {
           )}
         </div>
       </div>
-      <div className="h-28"></div>
+      {/* <div className="h-28"></div> */}
     </>
   );
 };
