@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { AiFillStar } from "react-icons/ai";
-import { BiSolidUser } from "react-icons/bi";
+
+import { FaUserCircle } from "react-icons/fa";
 
 const ReviewCard = ({ review, users }) => {
   const [userName, setUserName] = useState("User not found");
@@ -11,12 +12,13 @@ const ReviewCard = ({ review, users }) => {
       if (user.id === review.userId) {
         setUserName(user.name);
         setUserPhoto(user.photo);
+        break;
       }
     }
-  }, []);
+  }, [users]);
 
   return (
-    <div className="flex space-x-3 py-4 border-t-[1px]">
+    <div className="flex space-x-4 py-4 border-t-[1px]">
       {userPhoto ? (
         <img
           src={userPhoto}
@@ -24,7 +26,7 @@ const ReviewCard = ({ review, users }) => {
           className="block h-9 w-9 rounded-full text-gray-300 border border-gray-300"
         />
       ) : (
-        <BiSolidUser className="block h-[32px] w-auto rounded-full text-gray-300 border border-gray-300" />
+        <FaUserCircle className="block h-[32px] w-auto rounded-full text-gray-300 border border-gray-300" />
       )}
 
       <div className="flex flex-col">

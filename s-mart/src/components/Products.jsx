@@ -2,11 +2,10 @@ import React from "react";
 import ProductCard from "./ProductCard";
 
 const Products = ({ products }) => {
-  // console.log(products);
   return (
     <div className="py-10">
       <div className="flex flex-col items-center gap-4">
-        <h1 className="sm:text-2xl text-md bg-teal-500 text-white py-2 sm:w-80 w-60 text-center rounded-full font-semibold hover:bg-teal-600 cursor-pointer sm:mt-6 mt-2">
+        <h1 className="sm:text-xl text-md bg-teal-500 text-white py-2 sm:w-80 w-60 text-center rounded-full font-semibold hover:bg-teal-600 cursor-pointer sm:mt-6 mt-2">
           Shop with S-MART
         </h1>
         <p className="sm:max-w-[600px] text-gray-400 text-center text-xs sm:text-sm mt-4">

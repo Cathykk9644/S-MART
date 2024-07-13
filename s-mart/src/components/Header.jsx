@@ -132,7 +132,7 @@ const Header = () => {
                     navigate("/");
                     setMenuOpen(false);
                   }}
-                  className="text-teal-500 hover:text-teal-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-200 hover:font-bold text-sm"
+                  className="text-teal-500 hover:text-teal-700 hover:scale-90 underline-offset-2 decoration-[1px] cursor-pointer duration-200 hover:font-bold text-sm"
                 >
                   Home
                 </li>
@@ -148,7 +148,7 @@ const Header = () => {
                           });
                           setMenuOpen(false);
                         }}
-                        className="text-teal-500 font-bold hover:text-teal-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-200 text-sm"
+                        className="text-teal-500 font-bold hover:text-teal-700 hover:scale-90 underline-offset-2 decoration-[1px] cursor-pointer duration-200 text-sm"
                       >
                         Login
                       </button>
@@ -161,7 +161,7 @@ const Header = () => {
                           });
                           setMenuOpen(false);
                         }}
-                        className="text-teal-500 font-bold hover:text-teal-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-200 text-sm"
+                        className="text-teal-500 font-bold hover:text-teal-700 hover:scale-90 underline-offset-2 decoration-[1px] cursor-pointer duration-200 text-sm"
                       >
                         Signup
                       </button>
@@ -170,10 +170,10 @@ const Header = () => {
                 )}
                 <li>
                   <Link to="/cart" onClick={() => setMenuOpen(false)}>
-                    <div className="relative">
+                    <div className="relative hover:scale-90">
                       <img className="w-6" src={cart} alt="cart-image" />
                       <span
-                        className={`absolute  w-6 top-2 left-0 text-sm flex items-center justify-center font-bold text-teal-500 ${
+                        className={`absolute  w-6 top-2 left-0 text-sm hover:text-teal-700 flex items-center justify-center font-bold text-teal-500 ${
                           totalQuantity > 0 ? "text-teal-600" : ""
                         }`}
                       >

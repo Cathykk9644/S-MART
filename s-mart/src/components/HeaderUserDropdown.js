@@ -14,7 +14,7 @@ const HeaderUserDropdown = () => {
       onMouseEnter={() => setDropdownVisible(true)}
       onMouseLeave={() => setDropdownVisible(false)}
     >
-      <div className="flex items-center leading-6 sm:px-2 text-teal-500 hover:text-teal-700 hover:underline underline-offset-2 decoration-[1px] duration-200 hover:font-bold ">
+      <div className="flex items-center leading-6 sm:px-2 text-teal-500 hover:text-teal-700 hover:scale-90 underline-offset-2 decoration-[1px] duration-200 hover:font-bold ">
         {user.photoURL && (
           <img
             src={user.photoURL}

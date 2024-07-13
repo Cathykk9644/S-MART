@@ -31,9 +31,11 @@ const ProductInfo = () => {
   }, []);
 
   return (
-    <div>
+    <div className="max-w-screen-xl mx-auto my-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-screen-xl mx-auto my-10 flex flex-col gap-4">
+        {/* Product Info Section */}
         <div className="flex w-full gap-10">
+          {/* Product Image */}
           <div className="w-2/5 relative">
             <img
               className="w-full h-[550px] object-cover rounded-sm"
@@ -48,9 +50,11 @@ const ProductInfo = () => {
               )}
             </div>
           </div>
+
+          {/* Product Details */}
           <div className="w-3/5 flex flex-col justify-center gap-10">
             <div>
-              <h2 className="text-4xl text-gray-500 font-semibold">
+              <h2 className="md:text-4xl sm:text-2xl text-gray-500 font-semibold">
                 {details.title}
               </h2>
             </div>
@@ -113,6 +117,8 @@ const ProductInfo = () => {
             </p>
           </div>
         </div>
+
+        {/* Review Section */}
         <div>
           <ReviewForm product={details} />
           <div className="flex flex-col-reverse w-full ">
