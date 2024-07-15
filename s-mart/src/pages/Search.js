@@ -16,7 +16,7 @@ const Search = () => {
   }
 
   return (
-    <div>
+    <div className="mt-12 sm:mt-20">
       <Products products={searchResults} />
     </div>
   );

@@ -37,7 +37,11 @@ const SignIn = () => {
         email: "",
         password: "",
       });
-      navigate(from === "/register" || from === "/signin" ? "/" : from);
+      toast.success("You have successfully signed in to your account");
+      setTimeout(
+        () => navigate(from === "/register" || from === "/signin" ? "/" : from),
+        3000
+      );
     } else {
       toast.error("Incorrect email or password");
     }
@@ -106,8 +110,8 @@ const SignIn = () => {
         </button>
       </div>
       <ToastContainer
-        position="top-left"
-        autoClose={2000}
+        position="bottom-right"
+        autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick

@@ -12,10 +12,9 @@ const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const userContext = useUser();
-  console.log(userContext);
+
   const productData = useSelector((state) => state.smart.productData);
   const userInfo = useSelector((state) => state.smart.userInfo);
-  console.log(userInfo);
 
   const [searchTerms, setSearchTerms] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
@@ -88,7 +87,7 @@ const Header = () => {
                             state: { from: location.pathname },
                           })
                         }
-                        className="text-teal-500 font-bold hover:text-teal-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-200 text-xs sm:text-sm"
+                        className="text-teal-500 font-bold hover:text-teal-700 hover:scale-90 underline-offset-2 decoration-[1px] cursor-pointer duration-200 text-xs sm:text-sm"
                       >
                         Login
                       </button>
@@ -100,7 +99,7 @@ const Header = () => {
                             state: { from: location.pathname },
                           })
                         }
-                        className="text-teal-500 font-bold hover:text-teal-700 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-200 text-xs sm:text-sm"
+                        className="text-teal-500 font-bold hover:text-teal-700 hover:scale-90 underline-offset-2 decoration-[1px] cursor-pointer duration-200 text-xs sm:text-sm"
                       >
                         Signup
                       </button>

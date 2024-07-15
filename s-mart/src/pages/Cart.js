@@ -8,6 +8,7 @@ import axios from "axios";
 import { useUser } from "../contexts/userContext";
 import { writeOrderData } from "../api/firebase-database";
 import { useNavigate } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
 
 const Cart = () => {
   const productData = useSelector((state) => state.smart.productData);

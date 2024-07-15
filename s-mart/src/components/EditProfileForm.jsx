@@ -75,7 +75,7 @@ const EditProfileForm = () => {
 
   return (
     <div className="flex flex-col sm:flex-row sm:h-[70vh] justify-center items-center bg-slate-100">
-      <div className="flex flex-col sm:flex-row items-center justify-around h-full sm:max-w-[60vw] sm:w-full bg-white">
+      <div className="flex flex-col sm:flex-row items-center justify-around h-full sm:max-w-[60vw] sm:w-full bg-white mt-32 sm:mt-44">
         {/* Update profile details other than display picture */}
         <div className="flex flex-col items-center justify-start w-full sm:w-1/2 h-2/3 px-7 space-y-6">
           {/* Update email */}

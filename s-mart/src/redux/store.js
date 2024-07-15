@@ -31,5 +31,3 @@ export const store = configureStore({
 });
 
 export let persistor = persistStore(store);
-
-// all data that changes over time in your app is stored in the Redux store.

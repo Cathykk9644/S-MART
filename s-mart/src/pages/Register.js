@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { register } from "../api/firebase-authentication";
 import { useNavigate, useLocation } from "react-router-dom";
 import { editUserData } from "../api/firebase-database";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -29,7 +31,12 @@ const Register = () => {
           password: "",
           confirmPassword: "",
         });
-        navigate(from === "/register" || from === "/signin" ? "/" : from);
+        toast.success("Registration successful! You can now log in.");
+        setTimeout(
+          () =>
+            navigate(from === "/register" || from === "/signin" ? "/" : from),
+          3000
+        );
       }
     }
   };
@@ -114,6 +121,19 @@ const Register = () => {
           />
         </form>
       </div>
+
+      <ToastContainer
+        position="bottom-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 };

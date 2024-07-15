@@ -3,11 +3,24 @@ import { useUser } from "../contexts/userContext";
 import { logOut } from "../api/firebase-authentication";
 import { useNavigate } from "react-router-dom";
 import { RiArrowDropDownLine } from "react-icons/ri";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const HeaderUserDropdown = () => {
   const { user } = useUser();
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await logOut();
+      toast.success("You have successfully logged out.");
+      navigate("/");
+    } catch (error) {
+      toast.error("Failed to log out. Please try again.");
+      console.error("Logout error:", error);
+    }
+  };
 
   return (
     <div
@@ -49,7 +62,7 @@ const HeaderUserDropdown = () => {
             </li>
             <li>
               <button
-                onClick={async () => await logOut()}
+                onClick={handleLogout}
                 className=" text-sm w-full text-left leading-8 px-4 text-gray-400 hover:text-white hover:bg-teal-500 duration-200 hover:font-bold"
               >
                 Sign Out
