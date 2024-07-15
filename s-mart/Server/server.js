@@ -16,8 +16,6 @@ app.get("/", (req, res) => {
   res.send("Hello S-MART!");
 });
 
-// Create a specific route for payment
-// When the front-end sends a POST request to "/pay", this route is invoked. It receives the payment token and the total amount from the front-end in req.body
 app.post("/pay", async (req, res) => {
   console.log(req.body.token);
   await Stripe.charges.create({
