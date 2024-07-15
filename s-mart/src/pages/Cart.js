@@ -35,7 +35,7 @@ const Cart = () => {
     if (user) {
       setPayNow(true);
     } else {
-      toast.info("Please login first to leave a review.");
+      toast.info("Please login first to proceed to payment.");
       setTimeout(() => navigate("/signin"), 3000);
     }
   };

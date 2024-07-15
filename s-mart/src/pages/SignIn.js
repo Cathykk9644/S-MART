@@ -56,7 +56,7 @@ const SignIn = () => {
 
   return (
     <div className="flex h-[70vh] justify-center items-center">
-      <div className="flex flex-col items-center justify-start h-full sm:max-w-sm sm:w-full">
+      <div className="flex flex-col items-center justify-start h-full sm:max-w-sm w-2/3 sm:w-full">
         {/* <button onClick={() => console.log(location)}>Location</button> */}
         <h2 className="mt-24 sm:mt-44 sm:text-2xl font-bold text-gray-500">
           Hey welcome back!

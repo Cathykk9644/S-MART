@@ -43,18 +43,18 @@
 }
 
 .Toastify__toast {
-  font-family: "Quicksand", Helvetica, Arial !important;
+  font-family: "Poppins", sans-serif !important;
   --toastify-color-progress-light: #353535;
 }
 
 .Toastify__toast-body {
   color: #444c63;
-  font-size: 0.8rem;
-  padding-left: 25px;
+  font-size: 0.75rem;
+  padding-left: 20px;
   line-height: 20px;
-  padding: 0px;
+  padding: 5px;
   padding-top: 5px;
   width: 100%;
-  font-weight: 600;
-  margin-left: 25px !important;
+  font-weight: 700;
+  margin-left: 20px !important;
 }
