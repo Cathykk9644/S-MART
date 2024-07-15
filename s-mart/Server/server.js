@@ -3,7 +3,6 @@ const app = express();
 const cors = require("cors");
 app.use(cors());
 
-// body-parser middleware to parse incoming request bodies. This allows to access req.body in the route handlers.
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
