@@ -49,7 +49,8 @@ const Cart = () => {
       .then(console.log("payment success", productData))
       .then(writeOrderData(user.uid, productData, totalAmt))
       .then(dispatch(resetCart()))
-      .then(toast.success("Order placed!"))
+      .then(toast.success("You have successfully placed your order!"))
+      .then(setTimeout(() => navigate("/orders"), 3000))
       .catch((error) => {
         console.log("Payment Error:", error);
       });
