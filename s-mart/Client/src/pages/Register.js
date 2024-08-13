@@ -55,6 +55,7 @@ const Register = () => {
         <h2 className="mt-24 sm:mt-44 sm:text-2xl font-bold text-gray-500">
           Let's start from here!
         </h2>
+
         <form
           className="flex flex-col items-center justify-center w-full mt-4 sm:mt-12 space-y-6"
           onSubmit={handleSubmit}
@@ -120,6 +121,7 @@ const Register = () => {
             value="Sign Up"
           />
         </form>
+
         <button
           onClick={() =>
             navigate("/register", {
