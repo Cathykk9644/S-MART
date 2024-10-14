@@ -10,11 +10,11 @@ Username: janewong@test.com
 Password: test1234
 
 # 👩‍💻 Tech Stack
-- React.JS
+- React
 - Redux
 - Context API
 - TailwindCSS
-- Express.JS
+- Express
 - Firebase
 
 # Features 🔋
