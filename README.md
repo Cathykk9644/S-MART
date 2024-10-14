@@ -21,7 +21,7 @@ Password: test1234
 - ✅ User Authentication: Secure signup and login facilitated by Firebase, ensuring robust data protection.
 - ✅ Browse Fashion Items: Easily search and explore a wide range of fashion products through a user-friendly interface.
 - ✅ Flexible Shopping Cart: Add items to your cart from the homepage or product detail pages without needing to log in.
-- ✅ State Management with Redux: We use Redux for robust state management, handling global actions like cart updates and user information across the platform. 
+- ✅ State Management with Redux: Using Redux for robust state management, handling global actions like cart updates and user information across the platform. 
 - ✅ Responsive UI: Utilizes Tailwind CSS for a seamless, responsive experience across all devices.
 - ✅ Toast Notifications: Real-time, friendly user notifications for actions like adding items to a cart or completing purchases.
 - ✅ Redux Persist: Keeps your shopping cart and user preferences intact across sessions, even after refreshing the page.
